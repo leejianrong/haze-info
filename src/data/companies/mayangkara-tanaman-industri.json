@@ -1,0 +1,112 @@
+{
+  "slug": "mayangkara-tanaman-industri",
+  "name": "PT Mayangkara Tanaman Industri",
+  "parent": {
+    "name": "Sumitomo Forestry Co., Ltd. (securities code 1911)",
+    "listed": true
+  },
+  "summary": "PT Mayangkara Tanaman Industri (MTI) is a pulpwood plantation company in West Kalimantan that Sumitomo Forestry says it wholly owns. Nusantara Atlas satellite data, as reported by The Jakarta Post, show 556 ha burned inside its concession between January and July 2026. The Jakarta Post also reports that the Forestry Ministry imposed administrative sanctions on it in August 2025. We could not find that sanction in any ministry source, so this profile rates the concession on satellite detection only. The financial figures are group-wide figures from the listed parent's filings and are not MTI's. This profile does not establish who lit any fire.",
+  "concessions": [
+    {
+      "name": "PT Mayangkara Tanaman Industri",
+      "sector": "pulpwood",
+      "region": "Ketapang, West Kalimantan",
+      "burnedHa": {
+        "value": 556,
+        "unit": "ha",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        },
+        "asOf": "2026-09-11",
+        "method": "Burned area inside the concession for January to July 2026, as measured by Nusantara Atlas and reported by The Jakarta Post (published 11 September 2026). We did not measure it ourselves and have not seen the underlying Nusantara Atlas dataset. The article lists MTI sixth among the ten Kalimantan concessions with the largest burned area."
+      },
+      "allegationStatus": "detected",
+      "evidence": [
+        {
+          "kind": "burn-scar",
+          "summary": "Nusantara Atlas satellite data, as reported by The Jakarta Post, show 556 ha burned inside the concession between January and July 2026. This is satellite detection of burned area. It does not show how the fires began.",
+          "source": {
+            "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+            "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+            "publisher": "Asia News Network (republishing The Jakarta Post)"
+          },
+          "asOf": "2026-09-11"
+        },
+        {
+          "kind": "ministry-action",
+          "summary": "The Jakarta Post reports that MTI and PT Hutan Ketapang Industri were among firms given administrative sanctions over forest fires by the Forestry Ministry in August 2025, and that Sumitomo Forestry said MTI 'has complied with obligations imposed on the company' by the ministry. The article does not describe the sanction. We searched ministry releases and news from August and September 2026 and found no release that names MTI, so we have not rated this concession as ministry-sanctioned.",
+          "source": {
+            "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+            "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+            "publisher": "Asia News Network (republishing The Jakarta Post)"
+          },
+          "asOf": "2026-09-11"
+        },
+        {
+          "kind": "ownership",
+          "summary": "Sumitomo Forestry's website states that it established PT Mayangkara Tanaman Industri (MTI) in 2010 with Alas Kusuma Group and that MTI became a 100% subsidiary of the Sumitomo Forestry Group in July 2021.",
+          "source": {
+            "title": "Sustainable Forest Management: overseas forestry business (Sumitomo Forestry Group)",
+            "url": "https://sfc.jp/english/information/environment/forest/overseas.html",
+            "publisher": "Sumitomo Forestry Co., Ltd."
+          },
+          "asOf": "2025-12-31"
+        }
+      ],
+      "response": {
+        "status": "published",
+        "summary": "As reported by The Jakarta Post on 11 September 2026, a local representative of Sumitomo Forestry could not immediately confirm the size of the burned area inside MTI's concession. The Japanese firm said it 'has complied with obligations imposed on the company' by the Forestry Ministry in the previous August. We found no longer statement from the company or its parent.",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        },
+        "asOf": "2026-09-11"
+      },
+      "summary": "Reported by The Jakarta Post as one of the ten Kalimantan concessions with the largest burn scars from January to July 2026. The Forestry Ministry spokesperson was quoted as saying allegations of fire inside these companies' concessions still require verification, including field inspection."
+    }
+  ],
+  "financials": {
+    "basis": "listed-parent",
+    "parent": "Sumitomo Forestry Co., Ltd. (securities code 1911), group figures, not PT Mayangkara Tanaman Industri's",
+    "fiscalYear": "FY2025 (year to 31 December 2025)",
+    "currency": "JPY",
+    "revenue": {
+      "value": 2267577,
+      "unit": "JPY million",
+      "source": {
+        "title": "Eleven-Year Consolidated Financial Summary (Sumitomo Forestry Integrated Report 2026)",
+        "url": "https://sfc.jp/english/ir/library/pdf/ar_e_2026_17.pdf",
+        "publisher": "Sumitomo Forestry Co., Ltd."
+      },
+      "asOf": "2025-12-31",
+      "method": "Group net sales for the financial year ended 31 December 2025, as printed in the Eleven-Year Consolidated Financial Summary. Reported in Japanese yen and not converted. Covers all Sumitomo Forestry businesses, mainly housing, and is not MTI's revenue."
+    },
+    "netProfit": {
+      "value": 106666,
+      "unit": "JPY million",
+      "source": {
+        "title": "Eleven-Year Consolidated Financial Summary (Sumitomo Forestry Integrated Report 2026)",
+        "url": "https://sfc.jp/english/ir/library/pdf/ar_e_2026_17.pdf",
+        "publisher": "Sumitomo Forestry Co., Ltd."
+      },
+      "asOf": "2025-12-31",
+      "method": "Net income attributable to shareholders of parent for the financial year ended 31 December 2025, as printed in the Eleven-Year Consolidated Financial Summary. Reported in Japanese yen and not converted. Group-level, not MTI's."
+    }
+  },
+  "landHeldHa": {
+    "value": 70584,
+    "unit": "ha",
+    "source": {
+      "title": "Sustainable Forest Management: overseas forestry business (Sumitomo Forestry Group)",
+      "url": "https://sfc.jp/english/information/environment/forest/overseas.html",
+      "publisher": "Sumitomo Forestry Co., Ltd."
+    },
+    "asOf": "2025-12-31",
+    "method": "Managed area listed against PT. Mayangkara Tanaman Industri (MTI) in the 'Overseas Managed Afforestation Area' table on Sumitomo Forestry's website, under a heading giving distribution and area as of end of December 2025. Taken as printed; we did not check it against Indonesian permit records.",
+    "note": "Managed area as defined by the company. Its production area is shown separately on the source page."
+  },
+  "environmentalImpact": []
+}

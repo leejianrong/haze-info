@@ -1,0 +1,50 @@
+{
+  "slug": "arrtu-energie-resources",
+  "name": "PT Arrtu Energie Resources",
+  "summary": "PT Arrtu Energie Resources is an oil palm company in Ketapang, West Kalimantan. Nusantara Atlas satellite data, as reported by The Jakarta Post, show at least 978 ha burned inside its holding between January and July 2026, the largest burned area among Kalimantan concessions in that analysis. The Jakarta Post describes the company as a subsidiary of Nova Plantation Group. We did not find a filing or registry record to confirm that, so no parent is stated in the data. This profile does not establish who lit any fire.",
+  "concessions": [
+    {
+      "name": "PT Arrtu Energie Resources",
+      "sector": "palm",
+      "region": "Ketapang, West Kalimantan",
+      "burnedHa": {
+        "value": 978,
+        "unit": "ha",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        },
+        "asOf": "2026-09-11",
+        "method": "Burned area inside the concession for January to July 2026, as measured by Nusantara Atlas and reported by The Jakarta Post (published 11 September 2026). We did not measure it ourselves and have not seen the underlying Nusantara Atlas dataset. The figure is given as 'at least 978 ha' and the article lists the company first among the ten concessions with the largest burned area."
+      },
+      "allegationStatus": "detected",
+      "evidence": [
+        {
+          "kind": "burn-scar",
+          "summary": "Nusantara Atlas satellite data, as reported by The Jakarta Post, show at least 978 ha burned inside the concession between January and July 2026. This is satellite detection of burned area. It does not show how the fires began.",
+          "source": {
+            "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+            "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+            "publisher": "Asia News Network (republishing The Jakarta Post)"
+          },
+          "asOf": "2026-09-11"
+        }
+      ],
+      "response": {
+        "status": "none-found",
+        "asOf": "2026-10-18"
+      },
+      "summary": "The Jakarta Post reports that the company did not respond to its requests for comment. We searched English and Indonesian news for a statement about the 2026 fires from the company or Nova Plantation Group and found none."
+    }
+  ],
+  "financials": {
+    "undisclosed": true,
+    "reason": "No financial statements for this company were found in public filings. The company is not listed, and the sources read do not identify a listed parent whose filings could be used (ADR-0005)."
+  },
+  "landHeldHa": {
+    "undisclosed": true,
+    "reason": "No concession or land-bank area for this company was found in the sources read."
+  },
+  "environmentalImpact": []
+}

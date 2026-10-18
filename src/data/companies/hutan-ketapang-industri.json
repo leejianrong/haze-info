@@ -1,0 +1,82 @@
+{
+  "slug": "hutan-ketapang-industri",
+  "name": "PT Hutan Ketapang Industri",
+  "parent": {
+    "name": "Sampoerna Agri Resources Pte. Ltd.",
+    "listed": false
+  },
+  "summary": "PT Hutan Ketapang Industri (HKI) holds a 100,150 ha plantation forest permit in Ketapang, West Kalimantan. The Forestry Ministry announced on 3 and 4 September 2026 that it had suspended the business permits of HKI and four other holders and ordered environmental restoration after fires inside their concessions. The Jakarta Post reports that Singapore-based Sampoerna Agri Resources Pte. Ltd. controls HKI. Neither HKI nor its parent is listed, so financials are undisclosed.",
+  "concessions": [
+    {
+      "name": "PT Hutan Ketapang Industri",
+      "sector": "pulpwood",
+      "region": "Ketapang, West Kalimantan",
+      "burnedHa": {
+        "value": 670.76,
+        "unit": "ha",
+        "source": {
+          "title": "Kemenhut kembali sanksi 5 PBPH terkait karhutla (press release SP.488/HKLN/09/2026)",
+          "url": "https://www.kehutanan.go.id/news/kemenhut-kembali-sanksi-5-pbph-terkait-karhutla",
+          "publisher": "Ministry of Forestry, Republic of Indonesia"
+        },
+        "asOf": "2026-09-04",
+        "method": "Approximate burned area inside the permit area as printed in the Forestry Ministry press release of 4 September 2026. We did not measure it. The ministry does not state the measurement period or method in the release. The Jakarta Post, citing Nusantara Atlas, gives a different figure of 629 ha for January to July 2026."
+      },
+      "allegationStatus": "ministry-sanctioned",
+      "evidence": [
+        {
+          "kind": "ministry-action",
+          "summary": "The Forestry Ministry press release of 4 September 2026 lists HKI among five permit holders in West Kalimantan subject to administrative sanctions 'from suspension of business licences to enforced environmental restoration' after fires in their concessions. It gives HKI's permit area as 100,150 ha and burned area as about 670.76 ha. The release states one sanction for all five companies and does not give company-specific wording.",
+          "source": {
+            "title": "Kemenhut kembali sanksi 5 PBPH terkait karhutla (press release SP.488/HKLN/09/2026)",
+            "url": "https://www.kehutanan.go.id/news/kemenhut-kembali-sanksi-5-pbph-terkait-karhutla",
+            "publisher": "Ministry of Forestry, Republic of Indonesia"
+          },
+          "asOf": "2026-09-04"
+        },
+        {
+          "kind": "burn-scar",
+          "summary": "Nusantara Atlas satellite data, as reported by The Jakarta Post, show 629 ha burned inside the concession between January and July 2026. This is satellite detection of burned area. It does not show how the fires began. The article also reports that HKI remained under ministry oversight and had earlier been among firms given administrative sanctions in August 2025.",
+          "source": {
+            "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+            "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+            "publisher": "Asia News Network (republishing The Jakarta Post)"
+          },
+          "asOf": "2026-09-11"
+        },
+        {
+          "kind": "ownership",
+          "summary": "PintarSaham reports, from an Indonesia Stock Exchange disclosure by PT Sampoerna Agro Tbk, that PT Sungai Menang, a Sampoerna Agro subsidiary, sold 80% of PT Hutan Ketapang Industri to Sampoerna Agri Resources Pte. Ltd., with the transaction completed on 24 November 2025. The Jakarta Post describes HKI as controlled by Sampoerna Agri Resources. We have not read the IDX disclosure itself.",
+          "source": {
+            "title": "Fokus bisnis sawit, Sampoerna Agro (SGRO) lepas anak usaha hutan tanaman industri senilai Rp 1,57 triliun",
+            "url": "https://pintarsaham.id/fokus-bisnis-sawit-sampoerna-agro-sgro-lepas-anak-usaha-hutan-tanaman-industri-senilai-rp-157-triliun/",
+            "publisher": "PintarSaham"
+          },
+          "asOf": "2025-11-27"
+        }
+      ],
+      "response": {
+        "status": "none-found",
+        "asOf": "2026-10-18"
+      },
+      "summary": "The ministry sanction is recorded as an administrative action. A search of Indonesian and English news found no statement from HKI, Sampoerna Agri Resources or Sampoerna Agro about it. The Jakarta Post reports that other companies in its story had not responded to its requests for comment."
+    }
+  ],
+  "financials": {
+    "undisclosed": true,
+    "reason": "Neither PT Hutan Ketapang Industri nor Sampoerna Agri Resources Pte. Ltd. is listed, and we found no filed accounts for either. The former listed owner, PT Sampoerna Agro Tbk, sold its 80% stake in November 2025, so its filings no longer describe HKI (ADR-0005)."
+  },
+  "landHeldHa": {
+    "value": 100150,
+    "unit": "ha",
+    "source": {
+      "title": "Kemenhut kembali sanksi 5 PBPH terkait karhutla (press release SP.488/HKLN/09/2026)",
+      "url": "https://www.kehutanan.go.id/news/kemenhut-kembali-sanksi-5-pbph-terkait-karhutla",
+      "publisher": "Ministry of Forestry, Republic of Indonesia"
+    },
+    "asOf": "2026-09-04",
+    "method": "Permit (PBPH) area of 100,150 ha for PT Hutan Ketapang Industri as printed in the Forestry Ministry press release of 4 September 2026. This is the permit area, not planted area.",
+    "note": "Permit area as stated by the ministry."
+  },
+  "environmentalImpact": []
+}

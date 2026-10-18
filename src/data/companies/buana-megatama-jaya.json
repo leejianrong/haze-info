@@ -1,0 +1,50 @@
+{
+  "slug": "buana-megatama-jaya",
+  "name": "PT Buana Megatama Jaya",
+  "summary": "PT Buana Megatama Jaya is a pulpwood plantation company in West Kalimantan. The Jakarta Post, citing Nusantara Atlas, reports about 546 ha burned inside its concession between January and July 2026, and describes it as a supplier to APP Group, a Sinar Mas subsidiary. We did not find ownership records, filings or any ministry action for this company. This profile does not establish who lit any fire.",
+  "concessions": [
+    {
+      "name": "PT Buana Megatama Jaya",
+      "sector": "pulpwood",
+      "region": "West Kalimantan",
+      "burnedHa": {
+        "value": 546,
+        "unit": "ha",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        },
+        "asOf": "2026-09-11",
+        "method": "Burned area inside the concession for January to July 2026, as measured by Nusantara Atlas and reported by The Jakarta Post (published 11 September 2026). We did not measure it ourselves and have not seen the underlying Nusantara Atlas dataset. The figure is given as 'around 546 ha' and the article lists the company seventh among the ten concessions with the largest burned area."
+      },
+      "allegationStatus": "detected",
+      "evidence": [
+        {
+          "kind": "burn-scar",
+          "summary": "Nusantara Atlas satellite data, as reported by The Jakarta Post, show around 546 ha burned inside the concession between January and July 2026. This is satellite detection of burned area. It does not show how the fires began. The article describes the company as a supplier for APP Group. We have not established its shareholders and do not state a parent company.",
+          "source": {
+            "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+            "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+            "publisher": "Asia News Network (republishing The Jakarta Post)"
+          },
+          "asOf": "2026-09-11"
+        }
+      ],
+      "response": {
+        "status": "none-found",
+        "asOf": "2026-10-18"
+      },
+      "summary": "The Jakarta Post reports that companies in its story other than those it quotes did not respond to its requests for comment. We also searched English and Indonesian news for a statement from the company or APP about the 2026 fires and found none."
+    }
+  ],
+  "financials": {
+    "undisclosed": true,
+    "reason": "No financial statements for this company were found in public filings. The company is not listed, and the sources read do not identify a listed parent whose filings could be used (ADR-0005)."
+  },
+  "landHeldHa": {
+    "undisclosed": true,
+    "reason": "No concession or land-bank area for this company was found in the sources read."
+  },
+  "environmentalImpact": []
+}
