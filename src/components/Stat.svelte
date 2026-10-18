@@ -81,7 +81,7 @@
     display: none;
   }
   .receipt dt {
-    opacity: 0.6;
+    opacity: 0.78;
   }
   .receipt dd {
     margin: 0;
