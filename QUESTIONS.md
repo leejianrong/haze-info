@@ -2,7 +2,7 @@
 
 Statuses: `DECIDED` (user answered) · `ASSUMED` (default taken, correct it if wrong) · `FORK` (waiting on the user) · `DEFERRED` (not needed this milestone).
 
-Research context (as of 2026-10-18): Singapore 24h PSI ~181-192 (sources disagree); about 2M Malaysian students out of school Oct 9; flights cancelled. Nusantara Atlas: 285,914 ha burned Jan-Jul, 68,324 ha inside industrial concessions (palm 15,146 / mining 12,120 / pulp 10,485). Greenpeace (Oct 5) linked 20+ concessions; companies deny. Indonesia suspended 21 firms, penalised 20, investigating 19 unnamed.
+Research context (as of 2026-10-18): Singapore 24h PSI ~181-192 (sources disagree); about 2M Malaysian students out of school Oct 9; flights cancelled. Nusantara Atlas: 285,914 ha burned Jan-Jul, 68,324 ha inside industrial concessions (palm 15,146 / mining 12,120 / pulp 10,485). Greenpeace (Oct 5) linked 20+ concessions; companies deny. The Environment Ministry opened enforcement against 21 companies (field verification and monitoring signs, per Antara) and is verifying 19 unnamed ones out of 42 flagged; the Forestry Ministry has sanctioned 26 companies (5 permits revoked, 13 suspended, 8 warnings or restoration orders, per the New Straits Times). Counts come from the entries in src/data/government.json.
 
 ## Open forks
 
