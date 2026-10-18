@@ -13,7 +13,8 @@
     "test": "vitest run --passWithNoTests",
     "validate-data": "node scripts/validate-data.ts",
     "validate-data:urls": "node scripts/validate-data.ts --urls",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "check-budget": "node scripts/check-budget.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
