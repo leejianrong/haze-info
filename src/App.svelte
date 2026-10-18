@@ -1,6 +1,7 @@
 <script lang="ts">
   import { companies, findCompany } from './data/companies.ts'
   import { router } from './lib/router.svelte.ts'
+  import MapView from './components/MapView.svelte'
   import PsiBadge from './components/PsiBadge.svelte'
   import CompanyPage from './pages/CompanyPage.svelte'
 
@@ -18,6 +19,7 @@
       people.
     </p>
     <PsiBadge />
+    <MapView />
     <h2>Company profiles</h2>
     {#if companies.length === 0}
       <p>No profiles yet.</p>
