@@ -19,9 +19,10 @@ test('scrolling to a later chapter updates the active chapter and the map focus'
   const story = page.locator('.story')
   const map = page.getByRole('region', { name: 'Map of fire hotspots' })
   await expect(story).toHaveAttribute('data-active-chapter', 'source')
+  await expect(map).toHaveAttribute('data-focus', '106.5,-0.5')
   const before = await map.getAttribute('data-focus')
-  await page.locator('#people').scrollIntoViewIfNeeded()
-  await page.locator('#people h2').scrollIntoViewIfNeeded()
+  // Put the chapter heading at the top so the chapter crosses the middle of the screen.
+  await page.locator('#people h2').evaluate((el) => el.scrollIntoView({ block: 'start' }))
   await expect(story).toHaveAttribute('data-active-chapter', 'people')
   await expect(map).not.toHaveAttribute('data-focus', before!)
 })

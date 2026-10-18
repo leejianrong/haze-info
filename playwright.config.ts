@@ -2,6 +2,8 @@ import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
   testDir: 'e2e',
+  // Software WebGL is slow on busy machines, so give assertions room before calling a flake.
+  expect: { timeout: 10_000 },
   webServer: {
     command: 'npm run build && npm run preview -- --port 4173 --strictPort',
     url: 'http://localhost:4173',
