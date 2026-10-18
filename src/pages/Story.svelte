@@ -166,6 +166,11 @@
     min-height: 70vh;
     padding-block: 12px 40px;
   }
+  /* Skip layout and paint for chapters that are off screen on first load. */
+  .chapters-col section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
   .chapters-col section:last-child {
     min-height: 40vh;
   }
