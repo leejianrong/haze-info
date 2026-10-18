@@ -10,6 +10,7 @@ import {
   validateGovernment,
   validateHealthGuidance,
   validateImpact,
+  validatePeople,
   validatePrimer,
   validateStat,
   type Issue,
@@ -60,6 +61,12 @@ const burned: unknown = JSON.parse(
 )
 issues.push(...validateBurnedArea(burned, 'burned-area.json'))
 collectUrls(burned, urls)
+
+const people: unknown = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'people.json'), 'utf8'),
+)
+issues.push(...validatePeople(people, 'people.json'))
+collectUrls(people, urls)
 
 if (process.argv.includes('--urls')) {
   issues.push(...(await checkUrls(urls, (u, init) => fetch(u, { ...init, redirect: 'follow' }))))
