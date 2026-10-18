@@ -23,6 +23,7 @@ Planning is done; build has just started. Trust the code over the docs where the
 - Every statistic needs `source`, `asOf` and `method` (ADR-0003). Never write a number straight into a template.
 - Never write that a company "caused" the haze unless its `allegationStatus` is `ministry-sanctioned` or `court-finding` (ADR-0002). Show the company's response where one exists.
 - Company financials come from listed-parent filings only, otherwise "undisclosed" (ADR-0005).
+- People profiles follow ADR-0009: officials in office and listed-parent leadership only, verbatim sourced quotes about the haze, a licence recorded for every portrait, no criminal-record styling.
 - Frontend only. No backend, no cookies, no user data. Secrets live only as GitHub repo secrets (FIRMS key for the hotspot Action).
 - Routing is hash-based and Vite `base` is `./` (ADR-0001).
 

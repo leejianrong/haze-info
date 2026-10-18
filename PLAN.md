@@ -45,6 +45,7 @@ A scrolling story with a pinned map. It opens with a short primer for newcomers 
 - Bahasa Indonesia and Malay translations (content needs legal-wording verification)
 - 2015 and 2019 haze deep-dives, social share cards, embeds (deferred)
 - Personalised health advice. We link to NEA, MOH, WHO and Malaysia DOE.
+- Criminal-record styling or profiles of private-company or subsidiary staff. Named individuals follow ADR-0009.
 
 ## Requirements
 
