@@ -4,10 +4,13 @@ import globals from 'globals'
 import ts from 'typescript-eslint'
 
 export default ts.config(
-  { ignores: ['dist', 'node_modules'] },
+  { ignores: ['dist', 'node_modules', '.claude'] },
   js.configs.recommended,
   ...ts.configs.recommended,
   ...svelte.configs.recommended,
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
-  { files: ['**/*.svelte'], languageOptions: { parserOptions: { parser: ts.parser } } },
+  {
+    files: ['**/*.svelte', '**/*.svelte.ts'],
+    languageOptions: { parserOptions: { parser: ts.parser } },
+  },
 )
