@@ -1,0 +1,225 @@
+<script lang="ts">
+  import { onMount } from 'svelte'
+  import MapView from '../components/MapView.svelte'
+  import PsiBadge from '../components/PsiBadge.svelte'
+  import { companies } from '../data/companies.ts'
+  import { CHAPTERS, chapterById, type ChapterId } from '../lib/chapters.ts'
+
+  let active = $state<ChapterId>('source')
+  const focus = $derived(chapterById(active).focus)
+  const reduceMotion =
+    typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  onMount(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) active = e.target.id as ChapterId
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+    CHAPTERS.forEach((c) => {
+      const el = document.getElementById(c.id)
+      if (el) io.observe(el)
+    })
+    return () => io.disconnect()
+  })
+
+  function go(id: ChapterId) {
+    document.getElementById(id)?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' })
+  }
+</script>
+
+<div class="story" data-active-chapter={active}>
+  <header class="hero">
+    <h1>Haze Info</h1>
+    <p class="lede">
+      Fires in Indonesia are burning peat and plantation land. The smoke reaches Singapore and
+      Malaysia within days.
+    </p>
+    <p class="meta"><a href="#/method">How we know</a></p>
+  </header>
+
+  <nav class="chapters" aria-label="Chapters">
+    {#each CHAPTERS as c (c.id)}
+      <button aria-current={active === c.id ? 'true' : undefined} onclick={() => go(c.id)}>
+        {c.nav}
+      </button>
+    {/each}
+  </nav>
+
+  <div class="columns">
+    <aside class="pin" aria-label="Map">
+      <MapView {focus} />
+    </aside>
+
+    <div class="chapters-col">
+      <section id="source">
+        <h2>Where it starts</h2>
+        <p>
+          Fires are lit across Sumatra and Kalimantan in the dry season, to clear land. In dry years
+          they spread into peat, which smoulders for weeks.
+        </p>
+      </section>
+
+      <section id="companies">
+        <h2>Who holds the land</h2>
+        <p>
+          Fire inside a concession does not prove the holder lit it. Each profile shows how strong
+          the evidence is and what the company says.
+        </p>
+        {#if companies.length === 0}
+          <p class="muted">No profiles yet.</p>
+        {:else}
+          <ul class="cards">
+            {#each companies as c (c.slug)}
+              <li>
+                <a href={`#/company/${c.slug}`}>
+                  <strong>{c.name}</strong>
+                  <span>{c.concessions[0].region} · {c.concessions[0].sector}</span>
+                </a>
+              </li>
+            {/each}
+          </ul>
+        {/if}
+      </section>
+
+      <section id="people">
+        <h2>Who breathes it</h2>
+        <PsiBadge />
+      </section>
+
+      <section id="government">
+        <h2>What Jakarta did</h2>
+        <p class="muted">Timeline in progress.</p>
+      </section>
+
+      <section id="act">
+        <h2>What you can do</h2>
+        <p class="muted">Actions in progress.</p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero {
+    padding-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--f-display);
+    font-stretch: 70%;
+    font-weight: 800;
+    font-size: clamp(3rem, 9vw, 6rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .lede {
+    font-size: 1.2rem;
+    max-width: 34ch;
+  }
+  .meta {
+    font-family: var(--f-data);
+    font-size: 0.8rem;
+  }
+  .chapters {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    display: flex;
+    overflow-x: auto;
+    background: var(--ground);
+    border-block: 1px solid var(--ink);
+    margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  }
+  .chapters button {
+    flex: 1 0 auto;
+    background: transparent;
+    border: 0;
+    border-right: 1px solid var(--rule);
+    padding: 14px 18px;
+    font-family: var(--f-display);
+    font-stretch: 75%;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .chapters button[aria-current='true'] {
+    background: var(--ink);
+    color: var(--ground);
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(20px, 4vw, 48px);
+    align-items: start;
+    margin-top: 24px;
+  }
+  .pin {
+    position: sticky;
+    top: 64px;
+    --map-h: min(70vh, 560px);
+  }
+  .chapters-col section {
+    min-height: 70vh;
+    padding-block: 12px 40px;
+  }
+  .chapters-col section:last-child {
+    min-height: 40vh;
+  }
+  h2 {
+    font-family: var(--f-display);
+    font-stretch: 72%;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .muted {
+    color: var(--ink-2);
+  }
+  .cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .cards a {
+    display: grid;
+    gap: 2px;
+    padding: 14px 16px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .cards a:hover {
+    background: var(--ink);
+    color: var(--ground);
+  }
+  .cards span {
+    font-family: var(--f-data);
+    font-size: 0.74rem;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 820px) {
+    .columns {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .pin {
+      top: 52px;
+      z-index: 5;
+      --map-h: 34vh;
+      margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+    }
+    .chapters-col section {
+      min-height: 60vh;
+    }
+  }
+</style>
