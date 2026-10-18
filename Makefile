@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help install dev build preview check lint test gate hooks
+.PHONY: help install dev build preview check lint test validate gate hooks
 
 help: ## List available targets
 	@grep -E '^[a-zA-Z_-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -26,7 +26,10 @@ lint: ## ESLint and Prettier in check mode
 test: ## Fast unit tests (no browser, no network)
 	npm test
 
-gate: lint check test ## The pre-push gate: lint, type-check, unit tests
+gate: lint check test validate ## The pre-push gate: lint, type-check, unit tests
+
+validate: ## Validate data files (schema, sources, wording)
+	npm run validate-data
 
 hooks: ## Install the pre-push hook
 	ln -sf ../../scripts/git-hooks/pre-push .git/hooks/pre-push
