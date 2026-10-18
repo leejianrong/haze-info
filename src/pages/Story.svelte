@@ -2,10 +2,12 @@
   import { onMount } from 'svelte'
   import MapView from '../components/MapView.svelte'
   import PsiBadge from '../components/PsiBadge.svelte'
+  import CompanyRanking from '../components/CompanyRanking.svelte'
+  import HealthGuidance from '../components/HealthGuidance.svelte'
+  import ImpactStats from '../components/ImpactStats.svelte'
   import BurnScale from '../components/BurnScale.svelte'
   import GovernmentTimeline from '../components/GovernmentTimeline.svelte'
   import Primer from '../components/Primer.svelte'
-  import { companies } from '../data/companies.ts'
   import { CHAPTERS, chapterById, type ChapterId } from '../lib/chapters.ts'
 
   let active = $state<ChapterId>('source')
@@ -73,25 +75,16 @@
           Fire inside a concession does not prove the holder lit it. Each profile shows how strong
           the evidence is and what the company says.
         </p>
-        {#if companies.length === 0}
-          <p class="muted">No profiles yet.</p>
-        {:else}
-          <ul class="cards">
-            {#each companies as c (c.slug)}
-              <li>
-                <a href={`#/company/${c.slug}`}>
-                  <strong>{c.name}</strong>
-                  <span>{c.concessions[0].region} · {c.concessions[0].sector}</span>
-                </a>
-              </li>
-            {/each}
-          </ul>
-        {/if}
+        <CompanyRanking />
       </section>
 
       <section id="people">
         <h2>Who breathes it</h2>
         <PsiBadge />
+        <h3 class="sub">What it has done so far</h3>
+        <ImpactStats />
+        <h3 class="sub">Looking after yourself</h3>
+        <HealthGuidance />
       </section>
 
       <section id="government">
@@ -195,31 +188,6 @@
   }
   .muted {
     color: var(--ink-2);
-  }
-  .cards {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 10px;
-  }
-  .cards a {
-    display: grid;
-    gap: 2px;
-    padding: 14px 16px;
-    border: 1px solid var(--ink);
-    background: var(--paper);
-    text-decoration: none;
-    color: var(--ink);
-  }
-  .cards a:hover {
-    background: var(--ink);
-    color: var(--ground);
-  }
-  .cards span {
-    font-family: var(--f-data);
-    font-size: 0.74rem;
-    opacity: 0.8;
   }
 
   @media (max-width: 820px) {
