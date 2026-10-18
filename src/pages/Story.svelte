@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import MapView from '../components/MapView.svelte'
   import PsiBadge from '../components/PsiBadge.svelte'
+  import Primer from '../components/Primer.svelte'
   import { companies } from '../data/companies.ts'
   import { CHAPTERS, chapterById, type ChapterId } from '../lib/chapters.ts'
 
@@ -59,6 +60,7 @@
           Fires are lit across Sumatra and Kalimantan in the dry season, to clear land. In dry years
           they spread into peat, which smoulders for weeks.
         </p>
+        <Primer />
       </section>
 
       <section id="companies">
@@ -215,8 +217,12 @@
     .pin {
       top: 52px;
       z-index: 5;
-      --map-h: 34vh;
+      --map-h: 24vh;
       margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+    }
+    .pin :global(.credit),
+    .pin :global(.legend span) {
+      display: none;
     }
     .chapters-col section {
       min-height: 60vh;

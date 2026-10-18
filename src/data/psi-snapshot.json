@@ -1,4 +1,17 @@
 {
   "timestamp": "2026-10-18T16:00:00+08:00",
-  "regions": { "north": 115, "south": 148, "east": 150, "west": 204, "central": 158 }
+  "regions": {
+    "north": 115,
+    "south": 148,
+    "east": 150,
+    "west": 204,
+    "central": 158
+  },
+  "pm25": {
+    "north": 69,
+    "south": 101,
+    "east": 103,
+    "west": 153,
+    "central": 110
+  }
 }

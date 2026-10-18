@@ -37,6 +37,18 @@ describe('parsePsi', () => {
   it('reads the latest 24-hour PSI by region', () => {
     expect(parsePsi(body()).regions.west).toBe(120)
   })
+  it('reads PM2.5 when the feed has it and tolerates its absence', () => {
+    const withPm = body() as { data: { items: { readings: Record<string, unknown> }[] } }
+    withPm.data.items[0].readings.pm25_twenty_four_hourly = {
+      north: 30,
+      south: 40,
+      east: 50,
+      west: 60,
+      central: 70,
+    }
+    expect(parsePsi(withPm).pm25?.west).toBe(60)
+    expect(parsePsi(body()).pm25).toBeUndefined()
+  })
   it('rejects a malformed body', () => {
     expect(() => parsePsi({ data: { items: [] } })).toThrow()
   })
