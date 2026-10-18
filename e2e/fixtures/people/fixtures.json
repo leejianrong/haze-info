@@ -1,0 +1,73 @@
+[
+  {
+    "id": "fixture-official",
+    "name": "Fixture Official",
+    "category": "government",
+    "role": "Fictional agency head used in tests",
+    "organisation": "Fixture Agency",
+    "roleSource": {
+      "title": "Fixture page",
+      "url": "https://example.org/role",
+      "publisher": "Example"
+    },
+    "portrait": {
+      "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='150'><rect width='120' height='150' fill='%23999'/></svg>",
+      "licence": "CC0",
+      "credit": "Test fixture",
+      "sourceUrl": "https://example.org/photo"
+    },
+    "quotes": [
+      {
+        "text": "We send oxygen when there is no smoke.",
+        "translated": true,
+        "original": { "language": "id", "text": "Kami kirim oksigen kalau tidak ada asap." },
+        "date": "2026-10-10",
+        "context": "Fictional interview used in tests.",
+        "source": {
+          "title": "Fixture report",
+          "url": "https://example.org/quote",
+          "publisher": "Example News"
+        }
+      }
+    ]
+  },
+  {
+    "id": "fixture-minister",
+    "name": "Fixture Minister",
+    "category": "government",
+    "role": "Fictional minister used in tests",
+    "organisation": "Fixture Ministry",
+    "roleSource": {
+      "title": "Fixture page",
+      "url": "https://example.org/role2",
+      "publisher": "Example"
+    },
+    "quotes": []
+  },
+  {
+    "id": "fixture-director",
+    "name": "Fixture Director",
+    "category": "company-leadership",
+    "role": "Fictional chair used in tests",
+    "organisation": "Fixture Holdings",
+    "roleSource": {
+      "title": "Fixture filing",
+      "url": "https://example.org/filing",
+      "publisher": "Example Exchange"
+    },
+    "quotes": [
+      {
+        "text": "Hotspots alone do not establish the origin of a fire.",
+        "translated": false,
+        "date": "2026-10-15",
+        "context": "Fictional statement used in tests.",
+        "source": {
+          "title": "Fixture statement",
+          "url": "https://example.org/statement",
+          "publisher": "Example News"
+        },
+        "replyUrl": "https://example.org/response"
+      }
+    ]
+  }
+]
