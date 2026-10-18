@@ -22,18 +22,26 @@ const ResponseSchema = z.object({
       .array(
         z.object({
           timestamp: z.string(),
-          readings: z.object({ psi_twenty_four_hourly: RegionValues }),
+          readings: z.object({
+            psi_twenty_four_hourly: RegionValues,
+            pm25_twenty_four_hourly: RegionValues.optional(),
+          }),
         }),
       )
       .min(1),
   }),
 })
 
-export type PsiReading = { timestamp: string; regions: Record<Region, number> }
+export type PsiReading = {
+  timestamp: string
+  regions: Record<Region, number>
+  // 24-hour PM2.5 in ug/m3, when the feed includes it.
+  pm25?: Record<Region, number>
+}
 export type PsiResult = { origin: 'live' | 'snapshot'; reading: PsiReading }
 
 export const snapshot: PsiReading = z
-  .object({ timestamp: z.string(), regions: RegionValues })
+  .object({ timestamp: z.string(), regions: RegionValues, pm25: RegionValues.optional() })
   .parse(snapshotJson)
 
 // NEA's published PSI bands.
@@ -59,7 +67,11 @@ export function headline(reading: PsiReading): { region: Region; value: number }
 export function parsePsi(json: unknown): PsiReading {
   const parsed = ResponseSchema.parse(json)
   const latest = parsed.data.items[parsed.data.items.length - 1]
-  return { timestamp: latest.timestamp, regions: latest.readings.psi_twenty_four_hourly }
+  return {
+    timestamp: latest.timestamp,
+    regions: latest.readings.psi_twenty_four_hourly,
+    pm25: latest.readings.pm25_twenty_four_hourly,
+  }
 }
 
 type FetchLike = (

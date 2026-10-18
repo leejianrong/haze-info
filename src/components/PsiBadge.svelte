@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import guideline from '../data/guidelines.json'
+  import Comparison from './Comparison.svelte'
   import {
     classifyPsi,
     headline,
@@ -48,6 +50,14 @@
       </li>
     {/each}
   </ul>
+  {#if shown.reading.pm25}
+    <Comparison
+      value={shown.reading.pm25[top.region]}
+      unit="ug/m3"
+      {guideline}
+      subject="fine particles (PM2.5), {top.region} Singapore"
+    />
+  {/if}
   <p class="meta status">
     {#if result === null}
       Loading the latest reading
