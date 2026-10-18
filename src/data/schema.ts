@@ -98,3 +98,22 @@ export const CompanySchema = z.object({
   summary: z.string().optional(),
 })
 export type Company = z.infer<typeof CompanySchema>
+
+// Government chapter (ADR-0007): a dated commitment set against a dated outcome, no editorial text.
+const isoDateOrMonth = z
+  .string()
+  .regex(/^\d{4}-\d{2}(-\d{2})?$/, 'date must be ISO, YYYY-MM-DD or YYYY-MM')
+
+export const GovernmentEntrySchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'id must be a kebab-case slug'),
+  date: isoDateOrMonth,
+  title: z.string().min(1),
+  commitment: z.string().min(1),
+  outcome: z.string().min(1),
+  officialResponse: z
+    .object({ summary: z.string().min(1), source: SourceSchema, asOf: isoDate })
+    .optional(),
+  sources: z.array(SourceSchema).min(1),
+  asOf: isoDate,
+})
+export type GovernmentEntry = z.infer<typeof GovernmentEntrySchema>

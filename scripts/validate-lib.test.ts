@@ -1,5 +1,11 @@
 import { describe, expect, it, vi } from 'vitest'
-import { checkUrls, collectUrls, validateCompany } from './validate-lib.ts'
+import {
+  checkUrls,
+  collectUrls,
+  findBannedWord,
+  validateCompany,
+  validateGovernment,
+} from './validate-lib.ts'
 
 const source = { title: 'Report', url: 'https://example.org/r', publisher: 'Example' }
 const stat = { value: 556, unit: 'ha', source, asOf: '2026-07-31', method: 'Burn-scar mapping' }
@@ -83,5 +89,34 @@ describe('checkUrls', () => {
       delayMs: 0,
     })
     expect(issues[0].level).toBe('warning')
+  })
+})
+
+describe('validateGovernment', () => {
+  const entry = (text: string) => ({
+    id: 'example-entry',
+    date: '2026-10',
+    title: 'Example',
+    commitment: 'Officials said X',
+    outcome: text,
+    sources: [source],
+    asOf: '2026-10-18',
+  })
+
+  it('accepts a plain entry with a month-only date', () => {
+    expect(validateGovernment([entry('Y happened')], 'g.json')).toEqual([])
+  })
+
+  it('rejects editorial words, whole words only', () => {
+    expect(findBannedWord('A shameful delay')).toBe('shameful')
+    expect(findBannedWord('The plan failed')).toBe('failed')
+    expect(findBannedWord('Unfailing support')).toBeUndefined()
+    const issues = validateGovernment([entry('A total failure')], 'g.json')
+    expect(issues.some((i) => i.where.endsWith('.outcome') && i.level === 'error')).toBe(true)
+  })
+
+  it('rejects an entry with no sources', () => {
+    const e = { ...entry('ok'), sources: [] }
+    expect(validateGovernment([e], 'g.json').length).toBeGreaterThan(0)
   })
 })
