@@ -46,7 +46,14 @@ export type CompanyResponse = z.infer<typeof CompanyResponseSchema>
 export const SECTORS = ['palm', 'pulpwood', 'mining', 'logging', 'other'] as const
 
 export const EvidenceSchema = z.object({
-  kind: z.enum(['burn-scar', 'hotspot', 'ngo-report', 'ministry-action', 'court-ruling']),
+  kind: z.enum([
+    'burn-scar',
+    'hotspot',
+    'ngo-report',
+    'ministry-action',
+    'court-ruling',
+    'ownership',
+  ]),
   summary: z.string().min(1),
   source: SourceSchema,
   asOf: isoDate,

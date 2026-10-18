@@ -1,13 +1,16 @@
 {
   "slug": "first-resources",
   "name": "First Resources",
-  "parent": { "name": "First Resources Limited (SGX: EB5)", "listed": true },
+  "parent": {
+    "name": "First Resources Limited (SGX: EB5)",
+    "listed": true
+  },
   "summary": "First Resources is a Singapore-listed palm oil group. Greenpeace's report of 5 October 2026 named it among Singapore-linked companies whose concessions contained smoke-source points, and the company has published a response. The burned area shown is for one subsidiary concession, PT Limpah Sejahtera, from Nusantara Atlas satellite data as reported by The Jakarta Post. The financial and land figures are group-wide figures from the listed parent's filings and are not the subsidiary's. This profile does not establish who lit any fire.",
   "concessions": [
     {
       "name": "PT Limpah Sejahtera",
       "sector": "palm",
-      "region": "West Kalimantan",
+      "region": "Kalimantan",
       "burnedHa": {
         "value": 519,
         "unit": "ha",
@@ -30,6 +33,16 @@
             "publisher": "Asia News Network (republishing The Jakarta Post)"
           },
           "asOf": "2026-09-11"
+        },
+        {
+          "kind": "ownership",
+          "summary": "First Resources' SGX announcement of 26 February 2021 states that PT Borneo Ketapang Permai, a direct subsidiary of First Resources, held 94.62% of PT Limpah Sejahtera after a share subscription.",
+          "source": {
+            "title": "Announcement pursuant to Rule 706A of the Listing Manual, 26 February 2021",
+            "url": "https://links.sgx.com/1.0.0/corporate-announcements/EQB0489WPGO7NMQ5/649770_Announcement_pursuant_to_Rule_706A_of_the_Listing_Manual_26_February_2021.pdf",
+            "publisher": "Singapore Exchange (First Resources Limited)"
+          },
+          "asOf": "2021-02-26"
         }
       ],
       "response": {
