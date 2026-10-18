@@ -49,9 +49,9 @@ test('the section says a quote does not show who started a fire, and no criminal
   await page.goto('/')
   const section = page.getByRole('region', { name: 'Who said what' })
   await expect(section).toContainText('does not show who started any fire')
-  await expect(page.locator('[data-people-section]')).not.toContainText(
-    /mugshot|wanted|guilty|suspect/i,
-  )
+  for (const each of await page.locator('[data-people-section]').all()) {
+    await expect(each).not.toContainText(/mugshot|wanted|guilty|suspect/i)
+  }
 })
 
 test('person cards fit a 360px phone without sideways scroll', async ({ page }) => {
