@@ -5,6 +5,8 @@ import {
   findBannedWord,
   validateCompany,
   validateGovernment,
+  validateHealthGuidance,
+  validateImpact,
   validatePrimer,
   validateStat,
 } from './validate-lib.ts'
@@ -152,6 +154,92 @@ describe('validatePrimer', () => {
       'p.json',
     )
     expect(issues.map((i) => i.message)).toEqual(['em-dash in text', 'duplicate id one'])
+  })
+})
+
+describe('validateImpact', () => {
+  const item = (id: string, over: Record<string, unknown> = {}) => ({
+    id,
+    label: 'Schools closed',
+    stat,
+    context: 'One plain sentence.',
+    ...over,
+  })
+
+  it('passes a clean item', () => {
+    expect(validateImpact([item('one')], 'i.json')).toEqual([])
+  })
+
+  it('allows a missing context', () => {
+    expect(validateImpact([item('one', { context: undefined })], 'i.json')).toEqual([])
+  })
+
+  it('needs a complete stat', () => {
+    const issues = validateImpact([item('one', { stat: { ...stat, method: undefined } })], 'i.json')
+    expect(issues.some((i) => i.where.includes('method'))).toBe(true)
+  })
+
+  it('rejects duplicate ids and non-kebab ids', () => {
+    expect(validateImpact([item('one'), item('one')], 'i.json').map((i) => i.message)).toEqual([
+      'duplicate id one',
+    ])
+    expect(validateImpact([item('Bad_Id')], 'i.json').length).toBeGreaterThan(0)
+  })
+
+  it('rejects em-dashes and judging words', () => {
+    const issues = validateImpact(
+      [item('one', { context: 'A devastating figure — reported.' })],
+      'i.json',
+    )
+    expect(issues.map((i) => i.message)).toEqual([
+      'em-dash in text',
+      '"devastating" is judging wording',
+    ])
+  })
+
+  it('rejects a label with a full stop and a two-sentence context', () => {
+    const issues = validateImpact(
+      [item('one', { label: 'Schools closed.', context: 'One. Two.' })],
+      'i.json',
+    )
+    expect(issues.map((i) => i.where)).toEqual(['i.json:[0].label', 'i.json:[0].context'])
+  })
+})
+
+describe('validateHealthGuidance', () => {
+  const link = (id: string, over: Record<string, unknown> = {}) => ({
+    id,
+    publisher: 'Example Agency',
+    title: 'Haze advice',
+    url: 'https://example.org/haze',
+    summary: 'The page lists steps to reduce time outdoors.',
+    ...over,
+  })
+
+  it('passes a clean link', () => {
+    expect(validateHealthGuidance([link('one')], 'h.json')).toEqual([])
+  })
+
+  it('needs a valid url', () => {
+    expect(validateHealthGuidance([link('one', { url: 'nope' })], 'h.json').length).toBeGreaterThan(
+      0,
+    )
+  })
+
+  it('rejects duplicate ids, em-dashes and US spellings', () => {
+    const issues = validateHealthGuidance(
+      [link('one', { summary: 'Minimize time outdoors — always.' }), link('one')],
+      'h.json',
+    )
+    const messages = issues.map((i) => i.message)
+    expect(messages).toContain('duplicate id one')
+    expect(messages).toContain('em-dash in text')
+    expect(messages.some((m) => m.includes('British English'))).toBe(true)
+  })
+
+  it('requires a one-sentence summary', () => {
+    const issues = validateHealthGuidance([link('one', { summary: 'One. Two.' })], 'h.json')
+    expect(issues.some((i) => i.where.endsWith('summary'))).toBe(true)
   })
 })
 

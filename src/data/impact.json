@@ -1,0 +1,134 @@
+[
+  {
+    "id": "malaysia-school-closures-9-oct",
+    "label": "Areas in Malaysia with all schools closed on 9 October",
+    "stat": {
+      "value": "4 states, 2 federal territories and 1 district",
+      "unit": "areas with all schools closed",
+      "source": {
+        "title": "Haze: schools in Johor, Melaka, Negeri Sembilan, Selangor, Kuala Lumpur, Putrajaya and Rompin to close on 9 October",
+        "url": "https://bernama.com/en/news.php?id=2617381",
+        "publisher": "Bernama"
+      },
+      "asOf": "2026-10-08",
+      "method": "Count of the areas listed in Bernama's report of the Education Ministry announcement published 8 October 2026: Johor, Melaka, Negeri Sembilan and Selangor (states), Kuala Lumpur and Putrajaya (federal territories) and Rompin (a district in Pahang). The article gives no student numbers.",
+      "note": "Some headlines describe this as six states or territories; the Bernama list has seven areas. No official count of affected students was found."
+    },
+    "context": "Schools in Perlis, Perak, Penang, Sabah, Sarawak and Labuan stayed open."
+  },
+  {
+    "id": "malaysia-highest-api-9-oct",
+    "label": "Highest Air Pollutant Index reading in Malaysia on 9 October",
+    "stat": {
+      "value": 190,
+      "unit": "API",
+      "source": {
+        "title": "Haze: 36 areas record unhealthy API readings, Pasir Gudang highest at 190",
+        "url": "https://bernama.com/en/news.php?id=2617812",
+        "publisher": "Bernama"
+      },
+      "asOf": "2026-10-09",
+      "method": "Highest of the Department of Environment (DOE) API readings listed by Bernama as at 5.45pm on 9 October 2026, taken from the DOE APIMS portal. The highest reading was at Pasir Gudang, Johor.",
+      "note": "A figure of 196 at Pasir Gudang has been reported elsewhere but was not found in any source opened for this site."
+    },
+    "context": "The DOE classes 101 to 200 as unhealthy and 201 to 300 as very unhealthy."
+  },
+  {
+    "id": "malaysia-unhealthy-areas-9-oct",
+    "label": "Areas in Malaysia in the unhealthy API range on 9 October",
+    "stat": {
+      "value": 36,
+      "unit": "areas",
+      "source": {
+        "title": "Haze: 36 areas record unhealthy API readings, Pasir Gudang highest at 190",
+        "url": "https://bernama.com/en/news.php?id=2617812",
+        "publisher": "Bernama"
+      },
+      "asOf": "2026-10-09",
+      "method": "Number of monitoring areas with an API of 101 to 200 as at 5.45pm on 9 October 2026, as reported by Bernama from the DOE APIMS portal. The same report lists 32 areas as moderate and none as good.",
+      "note": "A count of 24 areas has been reported elsewhere but was not found in any source opened for this site."
+    }
+  },
+  {
+    "id": "malaysia-unhealthy-areas-14-oct",
+    "label": "Areas in Malaysia in the unhealthy API range on 14 October",
+    "stat": {
+      "value": 27,
+      "unit": "areas",
+      "source": {
+        "title": "Haze: 27 areas record unhealthy API readings as at 9am",
+        "url": "https://www.bernama.com/tv/news.php?id=2619978",
+        "publisher": "Bernama"
+      },
+      "asOf": "2026-10-14",
+      "method": "Number of monitoring areas with an API of 101 to 200 as at 9am on 14 October 2026, as reported by Bernama from the DOE APIMS portal. The highest reading was 177 at Pasir Gudang, Johor. The report also lists 41 areas as moderate and one as good.",
+      "note": "The report's table lists 28 rows against a headline count of 27, because Indera Mahkota, Kuantan appears as a single area."
+    }
+  },
+  {
+    "id": "singapore-peak-psi-9-oct",
+    "label": "Singapore's highest 24-hour PSI of 2026, central region, 9 October",
+    "stat": {
+      "value": 192,
+      "unit": "24-hour PSI",
+      "source": {
+        "title": "Haze in Singapore persists; 24-hour PSI remains unhealthy for all regions",
+        "url": "https://asianews.network/?p=307517",
+        "publisher": "The Straits Times via Asia News Network"
+      },
+      "asOf": "2026-10-13",
+      "method": "Peak 24-hour PSI for the central region, between 5pm and 8pm on 9 October 2026, as reported by The Straits Times on 13 October. The underlying PSI series is published by the National Environment Agency (NEA); NEA's own page was not opened, so this figure is as reported.",
+      "note": "Other reports give lower figures for the same day because they were taken earlier: The Star, carrying The Straits Times, gives 170 at 9am and 186 at 2pm. Each is a reading at a different time of day."
+    },
+    "context": "NEA classes a 24-hour PSI of 101 to 200 as unhealthy and 201 to 300 as very unhealthy."
+  },
+  {
+    "id": "singapore-psi-13-oct",
+    "label": "Singapore's highest regional 24-hour PSI at 9am on 13 October",
+    "stat": {
+      "value": 172,
+      "unit": "24-hour PSI",
+      "source": {
+        "title": "Haze in Singapore persists; 24-hour PSI remains unhealthy for all regions",
+        "url": "https://asianews.network/?p=307517",
+        "publisher": "The Straits Times via Asia News Network"
+      },
+      "asOf": "2026-10-13",
+      "method": "Highest of the five regional 24-hour PSI readings at 9am on 13 October 2026 as reported by The Straits Times: west 172, central 169, east 154, south 134, north 127. NEA's own page was not opened.",
+      "note": "All five regions were in the unhealthy range (101 to 200)."
+    }
+  },
+  {
+    "id": "firefly-flights-suspended",
+    "label": "Firefly flights between Kuala Lumpur and Singapore Seletar suspended",
+    "stat": {
+      "value": "10 to 14 October 2026",
+      "unit": "dates of suspension",
+      "source": {
+        "title": "Malaysia's Firefly cancels flights to Singapore over transboundary haze",
+        "url": "https://www.aljazeera.com/news/2026/10/13/malaysias-firefly-cancels-flights-to-singapore-over-transboundary-haze",
+        "publisher": "Al Jazeera"
+      },
+      "asOf": "2026-10-13",
+      "method": "Dates as reported by Al Jazeera on 13 October 2026: Firefly announced the cancellations on 10 October and the suspension of Subang to Seletar flights ran through Wednesday 14 October. The article gives no count of flights."
+    },
+    "context": "Firefly described the move as a proactive safety measure and rebooked passengers on Malaysia Airlines flights to Changi, subject to seat availability."
+  },
+  {
+    "id": "singapore-haze-subsidy-clinics",
+    "label": "Private clinics in Singapore's Haze Subsidy Scheme network",
+    "stat": {
+      "value": 1370,
+      "unit": "clinics",
+      "source": {
+        "title": "Remarks by Mr Ong Ye Kung at the doorstop interview on the Haze Subsidy Scheme, Health Fiesta 2026",
+        "url": "https://www.moh.gov.sg/newsroom/remarks-by-mr-ong-ye-kung--minister-for-health-and-coordinating-minister-for-social-policies--at-the-doorstop-interview-on-the-haze-subsidy-scheme--at-health-fiesta-2026--on-11-october-2026-/",
+        "publisher": "Ministry of Health, Singapore"
+      },
+      "asOf": "2026-10-11",
+      "method": "Figure stated by the Minister for Health on 11 October 2026: about 1,400 private clinics are in the Public Health Preparedness Clinic network and about 1,370 are in the Haze Subsidy Scheme. Close to 1,000 had responded positively that morning.",
+      "note": "The scheme started on 12 October 2026. The Minister said emergency departments and polyclinics were seeing a week-on-week increase in people with respiratory issues, and linked it to haze and an Influenza A season together; he gave no attendance figures."
+    },
+    "context": "Patients pay up to 0, 5 or 10 Singapore dollars depending on eligibility."
+  }
+]

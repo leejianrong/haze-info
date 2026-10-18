@@ -2,6 +2,8 @@ import { z } from 'zod'
 import {
   CompanySchema,
   GovernmentEntrySchema,
+  HealthGuidanceSchema,
+  ImpactStatSchema,
   PrimerCardSchema,
   StatSchema,
   type AllegationStatus,
@@ -152,6 +154,123 @@ export function validatePrimer(raw: unknown, file: string): Issue[] {
         issues.push({ level: 'error', where: `${file}:${p}`, message: 'em-dash in text' })
       }
     }
+  })
+  return issues
+}
+
+// Impact stats and health guidance (HAZE-14, HAZE-15): schema, unique ids, plain wording.
+export const JUDGING_WORDS = [
+  'terrible',
+  'horrific',
+  'shocking',
+  'devastating',
+  'alarming',
+  'catastrophic',
+  'disastrous',
+  'appalling',
+  'dire',
+  'massive',
+  'huge',
+] as const
+const JUDGING_PATTERN = new RegExp(`\\b(${[...BANNED_WORDS, ...JUDGING_WORDS].join('|')})\\b`, 'i')
+
+// US spellings that British English text should not use.
+const US_SPELLINGS =
+  /\b(color|center|program|organization|gray|meter|fiber|recognize|minimize)(s|d)?\b/i
+
+function plainWordingIssues(entry: unknown, file: string, n: number): Issue[] {
+  const issues: Issue[] = []
+  for (const [p, t] of strings(entry, `[${n}]`)) {
+    if (t.includes('—')) {
+      issues.push({ level: 'error', where: `${file}:${p}`, message: 'em-dash in text' })
+    }
+    const hit = JUDGING_PATTERN.exec(t)
+    if (hit) {
+      issues.push({
+        level: 'error',
+        where: `${file}:${p}`,
+        message: `"${hit[1]}" is judging wording`,
+      })
+    }
+  }
+  return issues
+}
+
+function schemaIssues(error: z.ZodError, file: string): Issue[] {
+  return error.issues.map((i) => ({
+    level: 'error',
+    where: `${file}:${i.path.join('.')}`,
+    message: i.message,
+  }))
+}
+
+function oneSentence(text: string): boolean {
+  return /[.!?]$/.test(text) && !/[.!?]\s+\S/.test(text)
+}
+
+export function validateImpact(raw: unknown, file: string): Issue[] {
+  const parsed = z.array(ImpactStatSchema).safeParse(raw)
+  if (!parsed.success) return schemaIssues(parsed.error, file)
+  const issues: Issue[] = []
+  const ids = new Set<string>()
+  parsed.data.forEach((item, n) => {
+    if (ids.has(item.id)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].id`,
+        message: `duplicate id ${item.id}`,
+      })
+    }
+    ids.add(item.id)
+    if (!/^[A-Z0-9]/.test(item.label) || /[.!?]$/.test(item.label)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].label`,
+        message: 'label must be a sentence-case phrase with no final full stop',
+      })
+    }
+    if (item.context !== undefined && !oneSentence(item.context)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].context`,
+        message: 'context must be one sentence ending in a full stop',
+      })
+    }
+    issues.push(...plainWordingIssues(item, file, n))
+  })
+  return issues
+}
+
+export function validateHealthGuidance(raw: unknown, file: string): Issue[] {
+  const parsed = z.array(HealthGuidanceSchema).safeParse(raw)
+  if (!parsed.success) return schemaIssues(parsed.error, file)
+  const issues: Issue[] = []
+  const ids = new Set<string>()
+  parsed.data.forEach((item, n) => {
+    if (ids.has(item.id)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].id`,
+        message: `duplicate id ${item.id}`,
+      })
+    }
+    ids.add(item.id)
+    if (!oneSentence(item.summary)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].summary`,
+        message: 'summary must be one sentence ending in a full stop',
+      })
+    }
+    const us = US_SPELLINGS.exec(item.summary)
+    if (us) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].summary`,
+        message: `"${us[0]}" is not British English`,
+      })
+    }
+    issues.push(...plainWordingIssues(item, file, n))
   })
   return issues
 }

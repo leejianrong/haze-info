@@ -133,3 +133,22 @@ export const PrimerCardSchema = z.object({
   facts: z.array(PrimerFactSchema).min(2),
 })
 export type PrimerCard = z.infer<typeof PrimerCardSchema>
+
+// Human impact stats (HAZE-14): one sourced Stat with a plain label and optional one-sentence context.
+export const ImpactStatSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'id must be a kebab-case slug'),
+  label: z.string().min(1),
+  stat: StatSchema,
+  context: z.string().optional(),
+})
+export type ImpactStat = z.infer<typeof ImpactStatSchema>
+
+// Official health guidance links (HAZE-15): the site links out and never gives its own medical advice.
+export const HealthGuidanceSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'id must be a kebab-case slug'),
+  publisher: z.string().min(1),
+  title: z.string().min(1),
+  url: z.url(),
+  summary: z.string().min(1),
+})
+export type HealthGuidance = z.infer<typeof HealthGuidanceSchema>
