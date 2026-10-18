@@ -192,5 +192,77 @@
       "body": "I read that at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, and I would like to follow your forest campaign.",
       "stats": ["burnedHaTotal"]
     }
+  },
+  {
+    "id": "asean-secretariat-haze-agenda",
+    "title": "Ask the ASEAN Secretariat to put haze on the summit agenda",
+    "audience": "asean",
+    "ask": "Please confirm how the 2026 haze is being handled under the ASEAN Agreement on Transboundary Haze Pollution and whether it will be on the agenda of the 49th ASEAN Summit.",
+    "target": {
+      "name": "ASEAN Secretariat, Community Relations Division",
+      "role": "Public enquiries",
+      "contact": {
+        "kind": "email",
+        "value": "CRD@asean.org",
+        "source": {
+          "title": "Contact Us",
+          "url": "https://asean.org/contact-us/",
+          "publisher": "ASEAN Secretariat"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear ASEAN Secretariat,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. Haze from these fires has reached Singapore and Malaysia.\n\nI ask you to confirm how the 2026 haze is being handled under the ASEAN Agreement on Transboundary Haze Pollution, and whether it will be on the agenda of the 49th ASEAN Summit in Manila in November.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions"]
+    }
+  },
+  {
+    "id": "malaysia-mp-raise-haze",
+    "title": "Ask your Malaysian MP to raise haze in the Dewan Rakyat",
+    "audience": "government-my",
+    "ask": "Please ask in the Dewan Rakyat what Malaysia is doing about transboundary haze and whether it will be raised at the 49th ASEAN Summit.",
+    "target": {
+      "name": "Your Member of Parliament",
+      "role": "Member of the Dewan Rakyat, Malaysia",
+      "contact": {
+        "kind": "page",
+        "value": "https://www.parlimen.gov.my/ahli-dewan.html?uweb=dr",
+        "source": {
+          "title": "Senarai Ahli Dewan Rakyat",
+          "url": "https://www.parlimen.gov.my/ahli-dewan.html?uweb=dr",
+          "publisher": "Parlimen Malaysia"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Member of Parliament,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. Haze from these fires has closed schools in Malaysia.\n\nI ask you to raise a question in the Dewan Rakyat on what Malaysia is doing about transboundary haze and whether it will be raised at the 49th ASEAN Summit in Manila.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions"]
+    }
+  },
+  {
+    "id": "trend-asia-fires-report",
+    "title": "Read Trend Asia's 2026 fires report",
+    "audience": "public",
+    "ask": "Read Trend Asia's October 2026 report on Indonesia's fires and its call for tighter supply-chain rules, and follow its work.",
+    "target": {
+      "name": "Trend Asia",
+      "role": "Research and advocacy group, Jakarta",
+      "contact": {
+        "kind": "page",
+        "value": "https://trendasia.org/en/new-report-reveals-surge-in-indonesias-2026-fires-driven-by-resource-extraction-experts-push-for-tighter-international-supply-chain-regulations/",
+        "source": {
+          "title": "New Report Reveals Surge in Indonesia's 2026 Fires Driven by Resource Extraction",
+          "url": "https://trendasia.org/en/new-report-reveals-surge-in-indonesias-2026-fires-driven-by-resource-extraction-experts-push-for-tighter-international-supply-chain-regulations/",
+          "publisher": "Trend Asia"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "I read that at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, and I would like to read Trend Asia's report on the fires.",
+      "stats": ["burnedHaTotal"]
+    }
   }
 ]
