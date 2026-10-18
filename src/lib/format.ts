@@ -8,7 +8,10 @@ const day = new Intl.DateTimeFormat('en-GB', {
 
 export function formatValue(value: number | string, unit: string): string {
   const v = typeof value === 'number' ? grouped.format(value) : value
-  return unit === '%' ? `${v}%` : `${v} ${unit}`
+  if (unit === '%') return `${v}%`
+  const cur = /^(US\$|S\$|RM|Rp|\$)\s*(.*)$/.exec(unit)
+  if (cur) return `${cur[1]}${v}${cur[2] ? ` ${cur[2]}` : ''}`
+  return `${v} ${unit}`
 }
 
 export function formatDate(iso: string): string {

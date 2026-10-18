@@ -12,10 +12,12 @@
     "format": "prettier --write .",
     "test": "vitest run --passWithNoTests",
     "validate-data": "node scripts/validate-data.ts",
-    "validate-data:urls": "node scripts/validate-data.ts --urls"
+    "validate-data:urls": "node scripts/validate-data.ts --urls",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^24.13.3",
