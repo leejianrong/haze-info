@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import MapView from '../components/MapView.svelte'
+  import PeopleSection from '../components/PeopleSection.svelte'
+  import { peopleIn } from '../data/people.ts'
   import PsiBadge from '../components/PsiBadge.svelte'
   import CompanyRanking from '../components/CompanyRanking.svelte'
   import HealthGuidance from '../components/HealthGuidance.svelte'
@@ -76,6 +78,10 @@
           the evidence is and what the company says.
         </p>
         <CompanyRanking />
+        <PeopleSection
+          title="Who runs the listed parents"
+          people={peopleIn(['company-leadership', 'company-spokesperson'])}
+        />
       </section>
 
       <section id="people">
@@ -90,6 +96,7 @@
       <section id="government">
         <h2>What Jakarta did</h2>
         <GovernmentTimeline />
+        <PeopleSection title="Who said what" people={peopleIn(['government'])} />
       </section>
 
       <section id="act">
