@@ -4,6 +4,7 @@
   import PeopleSection from '../components/PeopleSection.svelte'
   import { peopleIn } from '../data/people.ts'
   import PsiBadge from '../components/PsiBadge.svelte'
+  import ActionCards from '../components/ActionCards.svelte'
   import CompanyRanking from '../components/CompanyRanking.svelte'
   import HealthGuidance from '../components/HealthGuidance.svelte'
   import ImpactStats from '../components/ImpactStats.svelte'
@@ -101,7 +102,11 @@
 
       <section id="act">
         <h2>What you can do</h2>
-        <p class="muted">Actions in progress.</p>
+        <p>
+          Each message is ready to send. It uses the figures on this page and says only what the
+          evidence shows.
+        </p>
+        <ActionCards />
       </section>
     </div>
   </div>
@@ -197,9 +202,6 @@
     font-size: 2rem;
     line-height: 1;
     margin: 40px 0 14px;
-  }
-  .muted {
-    color: var(--ink-2);
   }
 
   @media (max-width: 820px) {
