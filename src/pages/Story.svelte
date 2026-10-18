@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import MapView from '../components/MapView.svelte'
   import PsiBadge from '../components/PsiBadge.svelte'
+  import GovernmentTimeline from '../components/GovernmentTimeline.svelte'
   import Primer from '../components/Primer.svelte'
   import { companies } from '../data/companies.ts'
   import { CHAPTERS, chapterById, type ChapterId } from '../lib/chapters.ts'
@@ -92,7 +93,7 @@
 
       <section id="government">
         <h2>What Jakarta did</h2>
-        <p class="muted">Timeline in progress.</p>
+        <GovernmentTimeline />
       </section>
 
       <section id="act">
