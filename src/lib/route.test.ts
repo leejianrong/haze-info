@@ -12,6 +12,9 @@ describe('parseRoute', () => {
       slug: 'first-resources',
     })
   })
+  it('parses the method page', () => {
+    expect(parseRoute('#/method')).toEqual({ name: 'method' })
+  })
   it('rejects unknown paths', () => {
     expect(parseRoute('#/nope')).toEqual({ name: 'not-found' })
     expect(parseRoute('#/company/Bad Slug')).toEqual({ name: 'not-found' })
