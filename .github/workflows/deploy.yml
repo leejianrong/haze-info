@@ -1,11 +1,16 @@
 name: Deploy
 
 # Ships the exact commit CI validated. Armed by repo variable DEPLOY_ENABLED=true.
+# Also rebuilds every 3 hours (and on demand) from the tip of main to refresh the NASA FIRMS hotspot snapshot,
+# which is generated into dist at build time with the FIRMS_MAP_KEY secret and never committed.
 on:
   workflow_run:
     workflows: [CI]
     types: [completed]
     branches: [main]
+  schedule:
+    - cron: '7 */3 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,18 +23,30 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && vars.DEPLOY_ENABLED == 'true' }}
+    if: ${{ vars.DEPLOY_ENABLED == 'true' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
-        with: { ref: '${{ github.event.workflow_run.head_sha }}' }
+        with:
+          {
+            ref: "${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}",
+          }
       - uses: actions/setup-node@v7
         with: { node-version: 24, cache: npm }
       - run: npm ci
       - run: npm run build
+      - name: Refresh hotspots
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+        run: |
+          if [ -n "$FIRMS_MAP_KEY" ]; then
+            node scripts/refresh-hotspots.ts dist/hotspots.json || echo "hotspot refresh failed; deploying without a snapshot"
+          else
+            echo "FIRMS_MAP_KEY is not set; deploying without a hotspot snapshot"
+          fi
       - uses: actions/upload-pages-artifact@v5
         with: { path: dist }
       - id: deployment

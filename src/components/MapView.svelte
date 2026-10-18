@@ -1,6 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import hotspots from '../data/hotspots.json'
+  import {
+    EMPTY_SNAPSHOT,
+    loadHotspots,
+    snapshotNote,
+    type HotspotSnapshot,
+  } from '../lib/hotspots.ts'
   import { BASEMAP_ATTRIBUTION, BASEMAP_STYLE, MAP_VIEW } from '../lib/map-style.ts'
 
   type Focus = { center: [number, number]; zoom: number }
@@ -16,9 +21,8 @@
   let apply: ((visible: boolean) => void) | undefined
   let startNow: (() => void) | undefined
 
-  const snapshotNote = hotspots.asOf
-    ? `Hotspots as of ${hotspots.asOf}`
-    : 'No hotspot snapshot has been published yet'
+  let hotspots = $state<HotspotSnapshot>(EMPTY_SNAPSHOT)
+  const note = $derived(snapshotNote(hotspots))
 
   const ACTIVATE = ['scroll', 'wheel', 'pointerdown', 'touchstart', 'keydown'] as const
 
@@ -38,10 +42,12 @@
     startNow = start
     async function load() {
       try {
-        const [maplibregl] = await Promise.all([
+        const [maplibregl, snapshot] = await Promise.all([
           import('maplibre-gl'),
+          loadHotspots(),
           import('maplibre-gl/dist/maplibre-gl.css'),
         ])
+        hotspots = snapshot
         if (cancelled) return
         map = new maplibregl.Map({
           container,
@@ -57,7 +63,7 @@
         map.on('load', () => {
           map!.addSource('hotspots', {
             type: 'geojson',
-            data: hotspots,
+            data: snapshot,
           } as import('maplibre-gl').GeoJSONSourceSpecification)
           map!.addLayer({
             id: 'hotspots',
@@ -101,6 +107,7 @@
   data-hotspots-visible={showHotspots}
   data-motion={reduceMotion ? 'none' : 'smooth'}
   data-focus={focus.center.join(',')}
+  data-hotspot-count={hotspots.features.length}
 >
   <div class="canvas" bind:this={container}>
     {#if status === 'idle'}
@@ -128,7 +135,7 @@
   </div>
   <div class="legend">
     <label><input type="checkbox" bind:checked={showHotspots} /> Hotspots</label>
-    <span>{snapshotNote}</span>
+    <span>{note}</span>
   </div>
   <p class="credit">{BASEMAP_ATTRIBUTION}</p>
 </section>
