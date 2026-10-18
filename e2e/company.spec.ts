@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test('home links to the company profile', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('link', { name: 'First Resources' }).click()
+  await page.locator('#companies .ranking a', { hasText: 'First Resources' }).click()
   await expect(page.getByRole('heading', { level: 1, name: 'First Resources' })).toBeVisible()
 })
 
