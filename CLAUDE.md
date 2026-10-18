@@ -33,6 +33,10 @@ Planning is done; build has just started. Trust the code over the docs where the
 - Move the card to done only after its PR merges.
 - Deploys run from the CI success event and ship that exact SHA. They are off until the repo variable `DEPLOY_ENABLED` is `true`.
 
+## Before launch
+
+Work through `docs/launch-checklist.md`. The weekly Links workflow re-checks every source URL.
+
 ## Where things live
 
 - `PLAN.md`: what and why. `SLICES.md`: build order and acceptance tests. `docs/adr/`: decisions. `QUESTIONS.md`: decision register.

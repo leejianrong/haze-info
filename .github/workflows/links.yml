@@ -1,0 +1,22 @@
+name: Links
+
+# Source links rot. Check them every week and on demand; a failure here is a to-do, not a deploy blocker.
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --network-family-autoselection-attempt-timeout=2000
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run validate-data:urls
