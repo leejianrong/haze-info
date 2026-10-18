@@ -1,4 +1,10 @@
-import { CompanySchema, type AllegationStatus, type Company } from '../src/data/schema.ts'
+import { z } from 'zod'
+import {
+  CompanySchema,
+  GovernmentEntrySchema,
+  type AllegationStatus,
+  type Company,
+} from '../src/data/schema.ts'
 import { allowsCausalLanguage, CAUSAL_PATTERN } from '../src/data/wording.ts'
 
 export type Issue = { level: 'error' | 'warning'; where: string; message: string }
@@ -66,6 +72,55 @@ export function validateCompany(raw: unknown, file: string): Issue[] {
   const rest: Record<string, unknown> = { ...company }
   delete rest.concessions
   for (const [p, t] of strings(rest, '')) check(p.replace(/^\./, ''), t, 'weakest')
+  return issues
+}
+
+// ADR-0007: the government timeline states facts and counts, never a verdict.
+export const BANNED_WORDS = [
+  'negligent',
+  'failed',
+  'failure',
+  'shameful',
+  'incompetent',
+  'useless',
+] as const
+const BANNED_PATTERN = new RegExp(`\\b(${BANNED_WORDS.join('|')})\\b`, 'i')
+
+export function findBannedWord(text: string): string | undefined {
+  return BANNED_PATTERN.exec(text)?.[1]
+}
+
+export function validateGovernment(raw: unknown, file: string): Issue[] {
+  const parsed = z.array(GovernmentEntrySchema).safeParse(raw)
+  if (!parsed.success) {
+    return parsed.error.issues.map((i) => ({
+      level: 'error',
+      where: `${file}:${i.path.join('.')}`,
+      message: i.message,
+    }))
+  }
+  const issues: Issue[] = []
+  const ids = new Set<string>()
+  parsed.data.forEach((entry, n) => {
+    if (ids.has(entry.id)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].id`,
+        message: `duplicate id ${entry.id}`,
+      })
+    }
+    ids.add(entry.id)
+    for (const [p, t] of strings(entry, `[${n}]`)) {
+      const hit = findBannedWord(t)
+      if (hit) {
+        issues.push({
+          level: 'error',
+          where: `${file}:${p}`,
+          message: `"${hit}" is editorial wording (ADR-0007)`,
+        })
+      }
+    }
+  })
   return issues
 }
 
