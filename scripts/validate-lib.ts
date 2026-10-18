@@ -4,6 +4,7 @@ import {
   CompanySchema,
   GovernmentEntrySchema,
   HealthGuidanceSchema,
+  PersonSchema,
   ImpactStatSchema,
   PrimerCardSchema,
   StatSchema,
@@ -238,6 +239,49 @@ export function validateImpact(raw: unknown, file: string): Issue[] {
       })
     }
     issues.push(...plainWordingIssues(item, file, n))
+  })
+  return issues
+}
+
+// ADR-0009: our own wording about a person never judges or implies a criminal record. Quotes are verbatim and exempt.
+const CRIMINAL_PATTERN = /\b(mugshot|wanted|criminal|guilty|culprit|convicted|suspect|arrested)\b/i
+
+export function validatePeople(raw: unknown, file: string): Issue[] {
+  const parsed = z.array(PersonSchema).safeParse(raw)
+  if (!parsed.success) return schemaIssues(parsed.error, file)
+  const issues: Issue[] = []
+  const ids = new Set<string>()
+  parsed.data.forEach((person, n) => {
+    if (ids.has(person.id)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].id`,
+        message: `duplicate id ${person.id}`,
+      })
+    }
+    ids.add(person.id)
+    const ours: Record<string, unknown> = {
+      ...person,
+      quotes: person.quotes.map((q) => ({ context: q.context, date: q.date })),
+    }
+    for (const [p, t] of strings(ours, `[${n}]`)) {
+      const judging = findBannedWord(t)
+      if (judging) {
+        issues.push({
+          level: 'error',
+          where: `${file}:${p}`,
+          message: `"${judging}" is editorial wording (ADR-0009)`,
+        })
+      }
+      const crim = CRIMINAL_PATTERN.exec(t)
+      if (crim) {
+        issues.push({
+          level: 'error',
+          where: `${file}:${p}`,
+          message: `"${crim[0]}" implies a criminal record (ADR-0009)`,
+        })
+      }
+    }
   })
   return issues
 }

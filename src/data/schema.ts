@@ -163,3 +163,86 @@ export const HealthGuidanceSchema = z.object({
   summary: z.string().min(1),
 })
 export type HealthGuidance = z.infer<typeof HealthGuidanceSchema>
+
+// People behind the decisions (HAZE-28, ADR-0009). Quotes are verbatim and always sourced.
+export const PERSON_CATEGORIES = [
+  'government',
+  'company-leadership',
+  'company-spokesperson',
+] as const
+export const PORTRAIT_LICENCES = [
+  'CC0',
+  'CC BY 4.0',
+  'CC BY-SA 4.0',
+  'CC BY 3.0',
+  'CC BY-SA 3.0',
+  'Public domain',
+  'Government work',
+  'Permission granted',
+] as const
+
+export const PortraitSchema = z.object({
+  url: z.string().min(1),
+  licence: z.enum(PORTRAIT_LICENCES),
+  credit: z.string().min(1),
+  sourceUrl: z.url(),
+  permissionNote: z.string().optional(),
+})
+export type Portrait = z.infer<typeof PortraitSchema>
+
+export const QuoteSchema = z.object({
+  // The words as printed in the language we show them in. If translated, original is required.
+  text: z.string().min(1),
+  translated: z.boolean().default(false),
+  original: z.object({ language: z.string().min(2), text: z.string().min(1) }).optional(),
+  date: isoDate,
+  context: z.string().min(1),
+  source: SourceSchema,
+  replyUrl: z.url().optional(),
+})
+export type Quote = z.infer<typeof QuoteSchema>
+
+export const PersonSchema = z
+  .object({
+    id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'id must be a kebab-case slug'),
+    name: z.string().min(1),
+    category: z.enum(PERSON_CATEGORIES),
+    role: z.string().min(1),
+    organisation: z.string().min(1),
+    roleSource: SourceSchema,
+    portrait: PortraitSchema.optional(),
+    quotes: z.array(QuoteSchema).default([]),
+  })
+  .superRefine((p, ctx) => {
+    if (p.category === 'company-spokesperson' && p.portrait) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['portrait'],
+        message: 'spokespeople get no portrait (ADR-0009)',
+      })
+    }
+    if (p.portrait?.licence === 'Permission granted' && !p.portrait.permissionNote) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['portrait', 'permissionNote'],
+        message: 'record who gave permission and when',
+      })
+    }
+    p.quotes.forEach((q, i) => {
+      if (q.translated && !q.original) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['quotes', i, 'original'],
+          message: 'a translated quote needs its original text',
+        })
+      }
+    })
+    if (p.category === 'company-spokesperson' && p.quotes.length === 0) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['quotes'],
+        message: 'a spokesperson appears only as the author of a quote',
+      })
+    }
+  })
+export type Person = z.infer<typeof PersonSchema>
