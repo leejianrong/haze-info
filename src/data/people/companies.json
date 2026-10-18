@@ -1,0 +1,103 @@
+[
+  {
+    "id": "chang-see-hiang",
+    "name": "Chang See Hiang",
+    "category": "company-leadership",
+    "role": "Chairman and Independent Director",
+    "organisation": "First Resources Limited",
+    "roleSource": {
+      "title": "Board of Directors",
+      "url": "https://www.first-resources.com/about-us/board-of-directors",
+      "publisher": "First Resources Limited"
+    },
+    "quotes": []
+  },
+  {
+    "id": "ciliandra-fangiono",
+    "name": "Ciliandra Fangiono",
+    "category": "company-leadership",
+    "role": "Executive Director and Chief Executive Officer",
+    "organisation": "First Resources Limited",
+    "roleSource": {
+      "title": "Board of Directors",
+      "url": "https://www.first-resources.com/about-us/board-of-directors",
+      "publisher": "First Resources Limited"
+    },
+    "quotes": []
+  },
+  {
+    "id": "akira-ichikawa",
+    "name": "Akira Ichikawa",
+    "category": "company-leadership",
+    "role": "Representative Director, Chairman of the Board",
+    "organisation": "Sumitomo Forestry Co., Ltd.",
+    "roleSource": {
+      "title": "Board of Directors and Audit & Supervisory Board Members (Integrated Report 2026, p. 83)",
+      "url": "https://sfc.jp/english/ir/library/pdf/ar_e_2026_16.pdf",
+      "publisher": "Sumitomo Forestry Co., Ltd."
+    },
+    "quotes": []
+  },
+  {
+    "id": "toshiro-mitsuyoshi",
+    "name": "Toshiro Mitsuyoshi",
+    "category": "company-leadership",
+    "role": "Representative Director, President",
+    "organisation": "Sumitomo Forestry Co., Ltd.",
+    "roleSource": {
+      "title": "Board of Directors and Audit & Supervisory Board Members (Integrated Report 2026, p. 83)",
+      "url": "https://sfc.jp/english/ir/library/pdf/ar_e_2026_16.pdf",
+      "publisher": "Sumitomo Forestry Co., Ltd."
+    },
+    "quotes": []
+  },
+  {
+    "id": "yuuko-iizuka",
+    "name": "Yuuko Iizuka",
+    "category": "company-leadership",
+    "role": "Deputy Divisional Manager of Corporate Division (Head of Sustainability, and Quality and Occupational Safety Management)",
+    "organisation": "Sumitomo Forestry Co., Ltd.",
+    "roleSource": {
+      "title": "Executive Officers (Integrated Report 2026, p. 84)",
+      "url": "https://sfc.jp/english/ir/library/pdf/ar_e_2026_16.pdf",
+      "publisher": "Sumitomo Forestry Co., Ltd."
+    },
+    "quotes": []
+  },
+  {
+    "id": "prayudi-valentinus",
+    "name": "Prayudi Valentinus",
+    "category": "company-spokesperson",
+    "role": "Spokesperson",
+    "organisation": "PT Lamang Mining",
+    "roleSource": {
+      "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+      "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+      "publisher": "Asia News Network (republishing The Jakarta Post)"
+    },
+    "quotes": [
+      {
+        "text": "We reported in March there had been fires, but those were not situated inside our IUP,",
+        "translated": false,
+        "date": "2026-09-11",
+        "context": "The Jakarta Post reported this statement, made on the Tuesday before publication, in a story on the burned concessions identified by Nusantara Atlas.",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        }
+      },
+      {
+        "text": "Instead, the fires came from nearby community plantations and other concessions.",
+        "translated": false,
+        "date": "2026-09-11",
+        "context": "The Jakarta Post printed this as the next sentence of the same statement, in the same story.",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        }
+      }
+    ]
+  }
+]
