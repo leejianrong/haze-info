@@ -54,8 +54,10 @@
       <li>{PSI_ATTRIBUTION}</li>
       <li>{BASEMAP_ATTRIBUTION}</li>
       <li>
-        Fire hotspots, once published, come from NASA FIRMS (NASA LANCE / ESDIS) and are refreshed
-        on a schedule. Each map shows the date of its snapshot.
+        Fire hotspots come from NASA FIRMS (VIIRS, nominal and high confidence only) and are
+        refreshed every few hours. The map shows when its snapshot was fetched. We acknowledge the
+        use of data and imagery from NASA's Fire Information for Resource Management System (FIRMS),
+        part of NASA's Earth Science Data and Information System (ESDIS).
       </li>
       <li>
         Burned-area figures come from Nusantara Atlas as reported by the news outlets we cite. We do
