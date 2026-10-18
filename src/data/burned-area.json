@@ -1,0 +1,87 @@
+{
+  "total": {
+    "value": 285914,
+    "unit": "ha",
+    "source": {
+      "title": "Unchecked businesses blamed for raging wildfires in Indonesia",
+      "url": "https://asianews.network/unchecked-businesses-blamed-for-raging-wildfires-in-indonesia/",
+      "publisher": "The Jakarta Post, via Asia News Network"
+    },
+    "asOf": "2026-09-04",
+    "method": "Burned land across Indonesia, January to July 2026, as reported from Nusantara Atlas satellite monitoring (TheTreeMap). We have not seen the underlying dataset.",
+    "note": "The article says 'at least' this much."
+  },
+  "inConcessions": {
+    "value": 68324,
+    "unit": "ha",
+    "source": {
+      "title": "Unchecked businesses blamed for raging wildfires in Indonesia",
+      "url": "https://asianews.network/unchecked-businesses-blamed-for-raging-wildfires-in-indonesia/",
+      "publisher": "The Jakarta Post, via Asia News Network"
+    },
+    "asOf": "2026-09-04",
+    "method": "Part of the national burned total that falls inside industrial concessions, January to July 2026, as reported from Nusantara Atlas. The article describes it as roughly the size of Jakarta.",
+    "note": "Fire inside a concession does not show who started it."
+  },
+  "bySector": [
+    {
+      "sector": "palm",
+      "stat": {
+        "value": 15146,
+        "unit": "ha",
+        "source": {
+          "title": "Unchecked businesses blamed for raging wildfires in Indonesia",
+          "url": "https://asianews.network/unchecked-businesses-blamed-for-raging-wildfires-in-indonesia/",
+          "publisher": "The Jakarta Post, via Asia News Network"
+        },
+        "asOf": "2026-09-04",
+        "method": "Burned area inside oil palm concessions, as reported from Nusantara Atlas. The article says 'at least'."
+      }
+    },
+    {
+      "sector": "mining",
+      "stat": {
+        "value": 12120,
+        "unit": "ha",
+        "source": {
+          "title": "Unchecked businesses blamed for raging wildfires in Indonesia",
+          "url": "https://asianews.network/unchecked-businesses-blamed-for-raging-wildfires-in-indonesia/",
+          "publisher": "The Jakarta Post, via Asia News Network"
+        },
+        "asOf": "2026-09-04",
+        "method": "Burned area inside mining concessions, as reported from Nusantara Atlas."
+      }
+    },
+    {
+      "sector": "pulpwood",
+      "stat": {
+        "value": 10485,
+        "unit": "ha",
+        "source": {
+          "title": "Unchecked businesses blamed for raging wildfires in Indonesia",
+          "url": "https://asianews.network/unchecked-businesses-blamed-for-raging-wildfires-in-indonesia/",
+          "publisher": "The Jakarta Post, via Asia News Network"
+        },
+        "asOf": "2026-09-04",
+        "method": "Burned area inside pulpwood plantation concessions, as reported from Nusantara Atlas."
+      }
+    }
+  ],
+  "referenceAreas": [
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "area": {
+        "value": 744.3,
+        "unit": "km2",
+        "source": {
+          "title": "Environment: latest news and data",
+          "url": "https://www.singstat.gov.sg/find-data/explore-data-themes/society/environment/latest-news-data",
+          "publisher": "Singapore Department of Statistics"
+        },
+        "asOf": "2026-10-18",
+        "method": "Land area as at December 2025 (2024: 735.7 km2), as listed in the SingStat environment table. The page lists the Singapore Land Authority among its contributing agencies."
+      }
+    }
+  ]
+}

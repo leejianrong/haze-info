@@ -118,6 +118,17 @@ export const GovernmentEntrySchema = z.object({
 })
 export type GovernmentEntry = z.infer<typeof GovernmentEntrySchema>
 
+// Burned area and what it is measured against (HAZE-9). All areas are Stats with sources.
+export const BurnedAreaSchema = z.object({
+  total: StatSchema,
+  inConcessions: StatSchema,
+  bySector: z.array(z.object({ sector: z.enum(SECTORS), stat: StatSchema })).min(1),
+  referenceAreas: z
+    .array(z.object({ id: z.string().min(1), name: z.string().min(1), area: StatSchema }))
+    .min(1),
+})
+export type BurnedArea = z.infer<typeof BurnedAreaSchema>
+
 // Newcomer primer (HAZE-12): short cards, each fact carrying its own source.
 export const PrimerFactSchema = z.object({
   text: z.string().min(1),
