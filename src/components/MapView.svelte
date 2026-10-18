@@ -3,7 +3,13 @@
   import hotspots from '../data/hotspots.json'
   import { BASEMAP_ATTRIBUTION, BASEMAP_STYLE, MAP_VIEW } from '../lib/map-style.ts'
 
+  type Focus = { center: [number, number]; zoom: number }
+  let { focus = MAP_VIEW }: { focus?: Focus } = $props()
+  const reduceMotion =
+    typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
+
   let container: HTMLDivElement
+  let mapRef = $state<import('maplibre-gl').Map | undefined>()
   let status = $state<'loading' | 'ready' | 'unavailable'>('loading')
   let showHotspots = $state(true)
   let apply: ((visible: boolean) => void) | undefined
@@ -46,6 +52,7 @@
           })
           apply = (visible) =>
             map!.setLayoutProperty('hotspots', 'visibility', visible ? 'visible' : 'none')
+          mapRef = map
           status = 'ready'
         })
       } catch {
@@ -61,6 +68,13 @@
   $effect(() => {
     apply?.(showHotspots)
   })
+
+  $effect(() => {
+    if (!mapRef) return
+    const target = { center: focus.center, zoom: focus.zoom }
+    if (reduceMotion) mapRef.jumpTo(target)
+    else mapRef.flyTo({ ...target, duration: 1400, essential: false })
+  })
 </script>
 
 <section
@@ -68,6 +82,8 @@
   aria-label="Map of fire hotspots"
   data-status={status}
   data-hotspots-visible={showHotspots}
+  data-motion={reduceMotion ? 'none' : 'smooth'}
+  data-focus={focus.center.join(',')}
 >
   <div class="canvas" bind:this={container}>
     {#if status === 'unavailable'}
@@ -88,8 +104,8 @@
   }
   .canvas {
     position: relative;
-    height: min(60vh, 460px);
-    min-height: 280px;
+    height: var(--map-h, min(60vh, 460px));
+    min-height: 200px;
   }
   .unavailable {
     position: absolute;

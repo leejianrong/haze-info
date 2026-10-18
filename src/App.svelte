@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { companies, findCompany } from './data/companies.ts'
+  import { findCompany } from './data/companies.ts'
   import { router } from './lib/router.svelte.ts'
-  import MapView from './components/MapView.svelte'
-  import PsiBadge from './components/PsiBadge.svelte'
   import CompanyPage from './pages/CompanyPage.svelte'
   import MethodPage from './pages/MethodPage.svelte'
+  import Story from './pages/Story.svelte'
 
   const route = $derived(router.current)
   const company = $derived(route.name === 'company' ? findCompany(route.slug) : undefined)
@@ -16,24 +15,7 @@
   {:else if route.name === 'method'}
     <MethodPage />
   {:else if route.name === 'home'}
-    <h1>Haze Info</h1>
-    <p>
-      Where the October 2026 haze comes from, who holds the burning land, and what it does to
-      people.
-    </p>
-    <PsiBadge />
-    <MapView />
-    <p><a href="#/method">How we know</a></p>
-    <h2>Company profiles</h2>
-    {#if companies.length === 0}
-      <p>No profiles yet.</p>
-    {:else}
-      <ul>
-        {#each companies as c (c.slug)}
-          <li><a href={`#/company/${c.slug}`}>{c.name}</a></li>
-        {/each}
-      </ul>
-    {/if}
+    <Story />
   {:else}
     <h1>Page not found</h1>
     <p><a href="#/">Back to the start</a></p>
