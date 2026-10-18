@@ -62,11 +62,21 @@ const burned: unknown = JSON.parse(
 issues.push(...validateBurnedArea(burned, 'burned-area.json'))
 collectUrls(burned, urls)
 
-const people: unknown = JSON.parse(
-  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'people.json'), 'utf8'),
+// People are split across files (src/data/people/*.json), one list per file (ADR-0009).
+const peopleDir = join(import.meta.dirname, '..', 'src', 'data', 'people')
+const peopleFiles = readdirSync(peopleDir).filter((f) => f.endsWith('.json'))
+const everyone: unknown[] = []
+for (const f of peopleFiles) {
+  const list: unknown = JSON.parse(readFileSync(join(peopleDir, f), 'utf8'))
+  issues.push(...validatePeople(list, `people/${f}`))
+  collectUrls(list, urls)
+  if (Array.isArray(list)) everyone.push(...list)
+}
+issues.push(
+  ...validatePeople(everyone, 'people (all files)').filter((i) =>
+    i.message.startsWith('duplicate'),
+  ),
 )
-issues.push(...validatePeople(people, 'people.json'))
-collectUrls(people, urls)
 
 if (process.argv.includes('--urls')) {
   issues.push(...(await checkUrls(urls, (u, init) => fetch(u, { ...init, redirect: 'follow' }))))
