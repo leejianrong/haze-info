@@ -1,0 +1,58 @@
+[
+  {
+    "id": "nea-transboundary-haze-faqs",
+    "publisher": "National Environment Agency, Singapore",
+    "title": "Transboundary haze FAQs",
+    "url": "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs",
+    "summary": "The page sets out health advice during haze, including who is most affected, indoor measures, when N95 masks are and are not needed, and what to do for each 24-hour PSI band."
+  },
+  {
+    "id": "nea-managing-haze",
+    "publisher": "National Environment Agency, Singapore",
+    "title": "Managing haze",
+    "url": "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/managing-haze",
+    "summary": "The page says health effects depend on the PSI level, a person's health and time spent outdoors, and sets out how activity advice changes across the PSI bands."
+  },
+  {
+    "id": "moh-sg-haze",
+    "publisher": "Ministry of Health, Singapore",
+    "title": "Haze",
+    "url": "https://www.moh.gov.sg/others/haze/",
+    "summary": "The page gives MOH advice for healthy and vulnerable groups, including guidance on N95 masks and PM2.5 bands, and points to the Haze Subsidy Scheme."
+  },
+  {
+    "id": "moh-sg-haze-subsidy-scheme",
+    "publisher": "Ministry of Health, Singapore",
+    "title": "Haze Subsidy Scheme to start at Public Health Preparedness Clinics and polyclinics from 12 October 2026",
+    "url": "https://www.moh.gov.sg/newsroom/haze-subsidy-scheme-to-start-at-public-health-preparedness-clinics-and-polyclinics-from-12-october-2026/",
+    "summary": "The press release says who is eligible for subsidised care of haze-related conditions, the fee caps of 0, 5 and 10 Singapore dollars, and the conditions covered."
+  },
+  {
+    "id": "who-ambient-air-pollution",
+    "publisher": "World Health Organization",
+    "title": "Ambient (outdoor) air pollution",
+    "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+    "summary": "The fact sheet says exposure to tiny airborne particles outdoors harms the heart and lungs and is linked to an estimated 4.2 million early deaths worldwide in 2019."
+  },
+  {
+    "id": "who-wildfires",
+    "publisher": "World Health Organization",
+    "title": "Wildfires",
+    "url": "https://www.who.int/news-room/fact-sheets/detail/wildfires-and-health",
+    "summary": "The fact sheet says wildfire smoke can degrade air quality across wide areas and advises people to follow local guidance, limit time outdoors and keep indoor air clean."
+  },
+  {
+    "id": "moh-my-haze-health-advice",
+    "publisher": "Ministry of Health Malaysia",
+    "title": "Nasihat Kesihatan Mencegah Kemudaratan Jerebu (Health advice to prevent harm from haze, Malay)",
+    "url": "https://infosihat.moh.gov.my/isu-semasa/47-nasihat-kesihatan-mencegah-kemudaratan-jerebu.html",
+    "summary": "The Malay-language page, a 2010 ministry statement, advises reducing outdoor activity, staying indoors where possible, wearing a suitable mask outside and seeing a clinician if symptoms worsen."
+  },
+  {
+    "id": "dosh-my-haze-workplace",
+    "publisher": "Department of Occupational Safety and Health Malaysia, hosted by Department of Environment Malaysia",
+    "title": "Guidelines for the Protection of Employees Against the Effects of Haze at Workplaces",
+    "url": "https://www.doe.gov.my/wp-content/uploads/2021/10/Guidelines-for-the-Protection-of-Employees-Against-the-Effects-of-Haze-at-Workplaces.pdf",
+    "summary": "The guidelines say that at an API above 100 employers should assess risks, identify susceptible employees and decide when outdoor work stops."
+  }
+]

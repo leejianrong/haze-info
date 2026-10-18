@@ -1,5 +1,5 @@
 // Usage: node scripts/validate-data.ts [--urls]
-// Validates src/data/companies/*.json, government.json, primer.json and guidelines.json. --urls also checks every source link (network).
+// Validates src/data/companies/*.json, government.json, primer.json, guidelines.json, impact.json and health-guidance.json. --urls also checks every source link (network).
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import {
@@ -8,6 +8,8 @@ import {
   validateCompany,
   validateBurnedArea,
   validateGovernment,
+  validateHealthGuidance,
+  validateImpact,
   validatePrimer,
   validateStat,
   type Issue,
@@ -40,6 +42,18 @@ const guidelines: unknown = JSON.parse(
 )
 issues.push(...validateStat(guidelines, 'guidelines.json'))
 collectUrls(guidelines, urls)
+
+const impact: unknown = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'impact.json'), 'utf8'),
+)
+issues.push(...validateImpact(impact, 'impact.json'))
+collectUrls(impact, urls)
+
+const guidance: unknown = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'health-guidance.json'), 'utf8'),
+)
+issues.push(...validateHealthGuidance(guidance, 'health-guidance.json'))
+collectUrls(guidance, urls)
 
 const burned: unknown = JSON.parse(
   readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'burned-area.json'), 'utf8'),
