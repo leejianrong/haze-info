@@ -1,0 +1,89 @@
+{
+  "slug": "first-resources",
+  "name": "First Resources",
+  "parent": { "name": "First Resources Limited (SGX: EB5)", "listed": true },
+  "summary": "First Resources is a Singapore-listed palm oil group. Greenpeace's report of 5 October 2026 named it among Singapore-linked companies whose concessions contained smoke-source points, and the company has published a response. The burned area shown is for one subsidiary concession, PT Limpah Sejahtera, from Nusantara Atlas satellite data as reported by The Jakarta Post. The financial and land figures are group-wide figures from the listed parent's filings and are not the subsidiary's. This profile does not establish who lit any fire.",
+  "concessions": [
+    {
+      "name": "PT Limpah Sejahtera",
+      "sector": "palm",
+      "region": "West Kalimantan",
+      "burnedHa": {
+        "value": 519,
+        "unit": "ha",
+        "source": {
+          "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+          "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+          "publisher": "Asia News Network (republishing The Jakarta Post)"
+        },
+        "asOf": "2026-09-11",
+        "method": "Burned area inside the concession for January to July 2026, as measured by Nusantara Atlas and reported by The Jakarta Post (published 11 September 2026). We did not measure it ourselves and have not seen the underlying Nusantara Atlas dataset. The article lists PT Limpah Sejahtera tenth among the ten Kalimantan concessions with the largest burned area."
+      },
+      "allegationStatus": "detected",
+      "evidence": [
+        {
+          "kind": "burn-scar",
+          "summary": "Nusantara Atlas satellite data, as reported by The Jakarta Post, show 519 ha burned inside the concession between January and July 2026. This is satellite detection of burned area. It does not show how the fires began.",
+          "source": {
+            "title": "Local, foreign firms own largest burned concessions in Indonesia's Kalimantan",
+            "url": "https://asianews.network/local-foreign-firms-own-largest-burned-concessions-in-indonesias-kalimantan/",
+            "publisher": "Asia News Network (republishing The Jakarta Post)"
+          },
+          "asOf": "2026-09-11"
+        }
+      ],
+      "response": {
+        "status": "published",
+        "summary": "In an SGX statement on 15 October 2026, as reported by Mothership, First Resources disputed suggestions that fires began on its plantations. It said some fires began outside its concession boundaries before spreading into areas it manages, and that hotspots within or near a concession do not, by themselves, establish the origin of a fire. It said fires from outside its boundaries were in some cases too massive and fast-spreading to be fully contained, and linked the 2026 fire risk to prolonged dry conditions associated with El Nino. It said firefighting teams were on standby at the perimeter from the first hotspot detection. This is a group statement about its West Kalimantan operations, not a statement about PT Limpah Sejahtera alone. We have not read the SGX filing itself.",
+        "source": {
+          "title": "Two Singapore-listed palm oil firms named in Greenpeace report on Indonesian plantation fires",
+          "url": "https://mothership.sg/2026/10/two-singapore-listed-palm-oil-firms-greenpeace-report-indonesian-plantation-fires/",
+          "publisher": "Mothership"
+        },
+        "asOf": "2026-10-15"
+      },
+      "summary": "Greenpeace's 5 October 2026 report named First Resources among Singapore-linked companies tied to concessions with smoke-source points (reported by Mothership and The Edge Malaysia). The sources we opened do not say that PT Limpah Sejahtera itself was named in that report, so this concession is rated on satellite detection only."
+    }
+  ],
+  "financials": {
+    "basis": "listed-parent",
+    "parent": "First Resources Limited (SGX: EB5), group figures, not PT Limpah Sejahtera's",
+    "fiscalYear": "FY2025 (year to 31 December 2025)",
+    "currency": "USD",
+    "revenue": {
+      "value": 1661.1,
+      "unit": "US$ million",
+      "source": {
+        "title": "First Resources 2H2025 and FY2025 Results Presentation (slide 6, Income Statement Highlights)",
+        "url": "https://links.sgx.com/1.0.0/corporate-announcements/FM1YCYQ6L52OC90Y/876467_First%20Resources%202H2025%20and%20FY2025%20Results%20Presentation.pdf",
+        "publisher": "First Resources Limited via SGX"
+      },
+      "asOf": "2025-12-31",
+      "method": "Group sales for the financial year ended 31 December 2025, taken as printed in the results presentation dated 27 February 2026. Reported in US dollars and not converted. Includes PT Austindo Nusantara Jaya Tbk from its acquisition in May 2025."
+    },
+    "netProfit": {
+      "value": 353.9,
+      "unit": "US$ million",
+      "source": {
+        "title": "First Resources 2H2025 and FY2025 Results Presentation (slide 6, Income Statement Highlights)",
+        "url": "https://links.sgx.com/1.0.0/corporate-announcements/FM1YCYQ6L52OC90Y/876467_First%20Resources%202H2025%20and%20FY2025%20Results%20Presentation.pdf",
+        "publisher": "First Resources Limited via SGX"
+      },
+      "asOf": "2025-12-31",
+      "method": "Group profit attributable to owners of the Company for the financial year ended 31 December 2025, as printed in the results presentation dated 27 February 2026 (footnote 2). Reported in US dollars and not converted. The company's separately stated underlying net profit is a different figure."
+    }
+  },
+  "landHeldHa": {
+    "value": 272616,
+    "unit": "ha",
+    "source": {
+      "title": "First Resources 2H2025 and FY2025 Results Presentation (slide 17, Oil Palm Plantation Area)",
+      "url": "https://links.sgx.com/1.0.0/corporate-announcements/FM1YCYQ6L52OC90Y/876467_First%20Resources%202H2025%20and%20FY2025%20Results%20Presentation.pdf",
+      "publisher": "First Resources Limited via SGX"
+    },
+    "asOf": "2025-12-31",
+    "method": "Total planted oil palm area (nucleus 231,759 ha plus plasma 40,857 ha) as at 31 December 2025, as printed by the company. This is the group-wide planted area, not the subsidiary's, and not the total land bank, which we could not find in the filing we read.",
+    "note": "Planted area only. Total concession area is not shown here."
+  },
+  "environmentalImpact": []
+}
