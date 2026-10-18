@@ -48,6 +48,7 @@ jobs:
         with: { node-version: 24, cache: npm }
       - run: npm ci
       - run: npm run build
+      - run: npm run check-budget
       - run: npm audit --audit-level=high
 
   secrets:
@@ -77,3 +78,19 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+
+  lighthouse:
+    # Reports mobile scores on the production build. Not a required check: runner timings vary.
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - run: |
+          npx vite preview --port 4173 --strictPort &
+          npx wait-on http://localhost:4173
+          npx lighthouse@12 http://localhost:4173/ --only-categories=performance,accessibility,best-practices --form-factor=mobile --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=lh.json --quiet
+          node -e "const r=require('./lh.json');const c=r.categories;const a=r.audits;const line=(k,v)=>console.log('| '+k+' | '+v+' |');console.log('| Metric | Value |\n|---|---|');for(const k of Object.keys(c))line(k,Math.round(c[k].score*100));for(const k of ['first-contentful-paint','largest-contentful-paint','total-blocking-time','cumulative-layout-shift'])line(k,a[k].displayValue);if(c.performance.score<0.85||c.accessibility.score<0.95){console.log('\nBelow target: performance >= 85 and accessibility >= 95');process.exit(1)}" | tee -a "$GITHUB_STEP_SUMMARY"

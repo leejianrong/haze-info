@@ -23,6 +23,13 @@
     let cancelled = false
     ;(async () => {
       try {
+        // Keep the first paint free: start loading the map only once the browser is idle.
+        await new Promise<void>((resolve) =>
+          'requestIdleCallback' in window
+            ? window.requestIdleCallback(() => resolve(), { timeout: 1500 })
+            : setTimeout(resolve, 300),
+        )
+        if (cancelled) return
         const [maplibregl] = await Promise.all([
           import('maplibre-gl'),
           import('maplibre-gl/dist/maplibre-gl.css'),
