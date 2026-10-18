@@ -1,6 +1,7 @@
 <script lang="ts">
   import { companies, findCompany } from './data/companies.ts'
   import { router } from './lib/router.svelte.ts'
+  import PsiBadge from './components/PsiBadge.svelte'
   import CompanyPage from './pages/CompanyPage.svelte'
 
   const route = $derived(router.current)
@@ -16,6 +17,7 @@
       Where the October 2026 haze comes from, who holds the burning land, and what it does to
       people.
     </p>
+    <PsiBadge />
     <h2>Company profiles</h2>
     {#if companies.length === 0}
       <p>No profiles yet.</p>
