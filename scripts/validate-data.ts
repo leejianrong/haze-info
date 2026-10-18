@@ -2,8 +2,12 @@
 // Validates src/data/companies/*.json, government.json, primer.json, guidelines.json, impact.json and health-guidance.json. --urls also checks every source link (network).
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { CompanySchema, type AllegationStatus } from '../src/data/schema.ts'
+import { allowsCausalLanguage } from '../src/data/wording.ts'
 import {
   checkUrls,
+  collectActionContactUrls,
+  validateActions,
   collectUrls,
   validateCompany,
   validateBurnedArea,
@@ -20,10 +24,19 @@ const dir = join(import.meta.dirname, '..', 'src', 'data', 'companies')
 const files = readdirSync(dir).filter((f) => f.endsWith('.json'))
 const issues: Issue[] = []
 const urls = new Set<string>()
+const companyStatuses: Record<string, AllegationStatus> = {}
 
 for (const f of files) {
   const raw: unknown = JSON.parse(readFileSync(join(dir, f), 'utf8'))
   issues.push(...validateCompany(raw, f))
+  const parsedCompany = CompanySchema.safeParse(raw)
+  if (parsedCompany.success) {
+    // Wording about a company follows its weakest concession status.
+    const c = parsedCompany.data
+    companyStatuses[c.slug] = c.concessions.every((k) => allowsCausalLanguage(k.allegationStatus))
+      ? 'ministry-sanctioned'
+      : 'detected'
+  }
   collectUrls(raw, urls)
 }
 
@@ -61,6 +74,13 @@ const burned: unknown = JSON.parse(
 )
 issues.push(...validateBurnedArea(burned, 'burned-area.json'))
 collectUrls(burned, urls)
+
+const actions: unknown = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'actions.json'), 'utf8'),
+)
+issues.push(...validateActions(actions, 'actions.json', companyStatuses))
+collectUrls(actions, urls)
+collectActionContactUrls(actions, urls)
 
 // People are split across files (src/data/people/*.json), one list per file (ADR-0009).
 const peopleDir = join(import.meta.dirname, '..', 'src', 'data', 'people')

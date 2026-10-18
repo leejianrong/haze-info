@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import {
+  ActionCardSchema,
   BurnedAreaSchema,
   CompanySchema,
   GovernmentEntrySchema,
@@ -11,6 +12,7 @@ import {
   type AllegationStatus,
   type Company,
 } from '../src/data/schema.ts'
+import { ACTION_DATA_IDS, placeholdersIn } from '../src/lib/actions.ts'
 import { allowsCausalLanguage, CAUSAL_PATTERN } from '../src/data/wording.ts'
 
 export type Issue = { level: 'error' | 'warning'; where: string; message: string }
@@ -316,6 +318,59 @@ export function validateHealthGuidance(raw: unknown, file: string): Issue[] {
       })
     }
     issues.push(...plainWordingIssues(item, file, n))
+  })
+  return issues
+}
+
+// Contact values that are links (web-form, page) are checked like source links.
+export function collectActionContactUrls(raw: unknown, urls = new Set<string>()): Set<string> {
+  if (Array.isArray(raw)) {
+    for (const card of raw as { target?: { contact?: { kind?: string; value?: unknown } } }[]) {
+      const c = card?.target?.contact
+      if (c && c.kind !== 'email' && typeof c.value === 'string') urls.add(c.value)
+    }
+  }
+  return urls
+}
+
+// Action cards (HAZE-22, ADR-0008): schema, unique ids, known placeholders, wording per allegation status.
+export function validateActions(
+  raw: unknown,
+  file: string,
+  companyStatuses: Record<string, AllegationStatus> = {},
+): Issue[] {
+  const parsed = z.array(ActionCardSchema).safeParse(raw)
+  if (!parsed.success) return schemaIssues(parsed.error, file)
+  const issues: Issue[] = []
+  const err = (where: string, message: string) =>
+    issues.push({ level: 'error', where: `${file}:${where}`, message })
+  const ids = new Set<string>()
+  parsed.data.forEach((card, n) => {
+    if (ids.has(card.id)) err(`[${n}].id`, `duplicate id ${card.id}`)
+    ids.add(card.id)
+    const used = placeholdersIn(card.template.body)
+    for (const id of used) {
+      if (!(id in ACTION_DATA_IDS)) err(`[${n}].template.body`, `unknown placeholder id ${id}`)
+      else if (!card.template.stats.includes(id))
+        err(`[${n}].template.stats`, `placeholder ${id} is not listed in stats`)
+    }
+    for (const id of card.template.stats) {
+      if (!(id in ACTION_DATA_IDS)) err(`[${n}].template.stats`, `unknown data id ${id}`)
+      else if (!used.includes(id))
+        err(`[${n}].template.stats`, `stat ${id} is not used in the body`)
+    }
+    let allowed = false
+    if (card.companySlug !== undefined) {
+      const status = companyStatuses[card.companySlug]
+      if (!status) err(`[${n}].companySlug`, `unknown company ${card.companySlug}`)
+      else allowed = allowsCausalLanguage(status)
+    }
+    for (const [p, t] of strings(card, `[${n}]`)) {
+      if (t.includes('—')) err(p, 'em-dash in text')
+      const hit = CAUSAL_PATTERN.exec(t)
+      if (hit && !allowed)
+        err(p, `"${hit[0]}" needs a ministry-sanctioned or court-finding status (ADR-0002)`)
+    }
   })
   return issues
 }

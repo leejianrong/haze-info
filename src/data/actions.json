@@ -1,0 +1,196 @@
+[
+  {
+    "id": "first-resources-publish-boundaries",
+    "title": "Ask First Resources to publish its concession boundaries and 2026 fire report",
+    "audience": "company",
+    "ask": "Please publish the boundary maps for all your concessions in West Kalimantan and your 2026 fire-incident report, including where each fire began.",
+    "companySlug": "first-resources",
+    "target": {
+      "name": "First Resources Limited",
+      "role": "Investor and sustainability enquiries (SGX: EB5)",
+      "contact": {
+        "kind": "web-form",
+        "value": "https://www.first-resources.com/contact-us",
+        "source": {
+          "title": "Contact Us",
+          "url": "https://www.first-resources.com/contact-us",
+          "publisher": "First Resources Limited"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear First Resources,\n\nSatellite data from Nusantara Atlas, as reported by The Jakarta Post, shows {{limpahSejahteraBurnedHa}} hectares burned inside the PT Limpah Sejahtera concession between January and July 2026. Satellite data does not show who started a fire, and I note your statement that some fires began outside your boundaries.\n\nTo let the public check that, I ask you to publish the boundary maps for all your concessions and your 2026 fire-incident report, including the origin of each fire and the response of your firefighting teams.\n\nThank you for your time.",
+      "stats": ["limpahSejahteraBurnedHa"]
+    }
+  },
+  {
+    "id": "sumitomo-forestry-publish-boundaries",
+    "title": "Ask Sumitomo Forestry to publish its Indonesian concession boundaries and 2026 fire report",
+    "audience": "company",
+    "ask": "Please publish the boundary map of PT Mayangkara Tanaman Industri and a 2026 fire-incident report for it, including where each fire began.",
+    "companySlug": "mayangkara-tanaman-industri",
+    "target": {
+      "name": "Sumitomo Forestry Co., Ltd.",
+      "role": "Listed parent of PT Mayangkara Tanaman Industri (TSE: 1911)",
+      "contact": {
+        "kind": "web-form",
+        "value": "https://inquire.sfc.jp/sfc/m/contact/english/",
+        "source": {
+          "title": "Opinion and Inquiry of Sumitomo Forestry",
+          "url": "https://inquire.sfc.jp/sfc/m/contact/english/",
+          "publisher": "Sumitomo Forestry Co., Ltd."
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Sumitomo Forestry,\n\nSatellite data from Nusantara Atlas, as reported by The Jakarta Post, shows {{mayangkaraBurnedHa}} hectares burned inside the PT Mayangkara Tanaman Industri concession between January and July 2026. Satellite data does not show who started a fire.\n\nI ask you to publish the concession boundary map for PT Mayangkara Tanaman Industri and a 2026 fire-incident report for it, including the origin of each fire and the actions taken.\n\nThank you for your time.",
+      "stats": ["mayangkaraBurnedHa"]
+    }
+  },
+  {
+    "id": "singapore-mse-asean-haze",
+    "title": "Ask Singapore's environment ministry to press for action on haze at ASEAN",
+    "audience": "government-sg",
+    "ask": "Please state publicly whether Singapore will raise transboundary haze, and the 19 companies under field verification, at the 49th ASEAN Summit in Manila in November.",
+    "target": {
+      "name": "Ministry of Sustainability and the Environment (MSE)",
+      "role": "Singapore government ministry",
+      "contact": {
+        "kind": "web-form",
+        "value": "https://form.gov.sg/#!/5f9bbe55fb5198001166faec",
+        "source": {
+          "title": "Contact Us",
+          "url": "https://www.mse.gov.sg/contact-us",
+          "publisher": "Ministry of Sustainability and the Environment, Singapore"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Minister,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. Haze from these fires affects people across the region.\n\nI ask whether Singapore will raise transboundary haze at the 49th ASEAN Summit in Manila in November, and whether it will ask Indonesia to publish the names of the 19 companies under field verification.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions"]
+    }
+  },
+  {
+    "id": "singapore-mp-raise-haze",
+    "title": "Ask your Singapore MP to raise haze in Parliament",
+    "audience": "government-sg",
+    "ask": "Please ask in Parliament what Singapore is doing about transboundary haze and whether it will be raised at the 49th ASEAN Summit.",
+    "target": {
+      "name": "Your Member of Parliament",
+      "role": "Member of Parliament, Singapore",
+      "contact": {
+        "kind": "page",
+        "value": "https://www.parliament.gov.sg/mps/find-mps-in-my-constituency",
+        "source": {
+          "title": "Find MP(s) in My Constituency",
+          "url": "https://www.parliament.gov.sg/mps/find-mps-in-my-constituency",
+          "publisher": "Parliament of Singapore"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Member of Parliament,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. \n\nI ask you to raise a question in Parliament on what Singapore is doing about transboundary haze and whether it will be raised at the 49th ASEAN Summit in Manila.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions"]
+    }
+  },
+  {
+    "id": "malaysia-nres-haze",
+    "title": "Ask Malaysia's natural resources ministry to act on transboundary haze",
+    "audience": "government-my",
+    "ask": "Please confirm whether Malaysia will seek a haze mechanism at the ASEAN summit that treats haze as a transboundary pollution event with agreed data sharing.",
+    "target": {
+      "name": "Ministry of Natural Resources and Environmental Sustainability (NRES)",
+      "role": "Malaysian government ministry",
+      "contact": {
+        "kind": "web-form",
+        "value": "https://nres.spab.gov.my/eApps/system/index.do",
+        "source": {
+          "title": "Aduan dan Maklumbalas",
+          "url": "https://www.nres.gov.my/ms-my/Pages/AduandanMaklumbalas.aspx",
+          "publisher": "Ministry of Natural Resources and Environmental Sustainability, Malaysia"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Minister,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. I note that Malaysia plans to raise haze at ASEAN meetings ahead of the 49th ASEAN Summit.\n\nI ask you to confirm whether Malaysia will seek a haze mechanism with agreed data sharing about burned land inside concessions.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions"]
+    }
+  },
+  {
+    "id": "indonesia-klh-name-19-companies",
+    "title": "Ask Indonesia's Environment Ministry to publish the 19 company names",
+    "audience": "government-id",
+    "ask": "Please publish the names of the 19 companies under field verification and the date each verification will finish.",
+    "target": {
+      "name": "Kementerian Lingkungan Hidup / Badan Pengendalian Lingkungan Hidup",
+      "role": "Indonesian Environment Ministry",
+      "contact": {
+        "kind": "email",
+        "value": "layanan@kemenlh.go.id",
+        "source": {
+          "title": "Kementerian Lingkungan Hidup / Badan Pengendalian Lingkungan Hidup",
+          "url": "https://kemenlh.go.id/",
+          "publisher": "Kementerian Lingkungan Hidup, Indonesia"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Ministry,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. Indonesian authorities have said that 19 companies are under field verification, but have not released their names.\n\nI ask you to publish the names of those 19 companies and the date each verification will finish, so that the public can follow the outcome.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions"]
+    }
+  },
+  {
+    "id": "indonesia-kehutanan-name-19-companies",
+    "title": "Ask Indonesia's Forestry Ministry to publish the 19 company names",
+    "audience": "government-id",
+    "ask": "Please publish the names of the 19 companies under field verification, and the concession permits held by each.",
+    "target": {
+      "name": "Kementerian Kehutanan (PPID)",
+      "role": "Indonesian Forestry Ministry, public information office",
+      "contact": {
+        "kind": "web-form",
+        "value": "https://ppid.kehutanan.go.id/fepi",
+        "source": {
+          "title": "PPID Kementerian Kehutanan",
+          "url": "https://ppid.kehutanan.go.id/",
+          "publisher": "Kementerian Kehutanan, Indonesia"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "Dear Ministry,\n\nReported satellite monitoring (Nusantara Atlas, as reported by The Jakarta Post) shows at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, of which {{burnedHaInConcessions}} hectares were inside industrial concessions. Of these, {{burnedHaPalm}} hectares were inside oil palm concessions and {{burnedHaPulpwood}} hectares inside pulpwood concessions.\n\nUnder the public information law, I request the names of the 19 companies under field verification and the concession permits held by each.\n\nThank you for your time.",
+      "stats": ["burnedHaTotal", "burnedHaInConcessions", "burnedHaPalm", "burnedHaPulpwood"]
+    }
+  },
+  {
+    "id": "greenpeace-southeast-asia-forests",
+    "title": "Read and support Greenpeace Southeast Asia's forest campaign",
+    "audience": "public",
+    "ask": "Read the Greenpeace Southeast Asia forest campaign page and follow its current actions on haze and peatland fires.",
+    "target": {
+      "name": "Greenpeace Southeast Asia",
+      "role": "Non-governmental organisation",
+      "contact": {
+        "kind": "page",
+        "value": "https://www.greenpeace.org/southeastasia/what-we-do/protect-the-forests/",
+        "source": {
+          "title": "Protect the Forests",
+          "url": "https://www.greenpeace.org/southeastasia/what-we-do/protect-the-forests/",
+          "publisher": "Greenpeace Southeast Asia"
+        },
+        "verifiedOn": "2026-10-18"
+      }
+    },
+    "template": {
+      "body": "I read that at least {{burnedHaTotal}} hectares burned in Indonesia between January and July 2026, and I would like to follow your forest campaign.",
+      "stats": ["burnedHaTotal"]
+    }
+  }
+]
