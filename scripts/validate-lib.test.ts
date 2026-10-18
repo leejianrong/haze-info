@@ -5,6 +5,8 @@ import {
   findBannedWord,
   validateCompany,
   validateGovernment,
+  validatePrimer,
+  validateStat,
 } from './validate-lib.ts'
 
 const source = { title: 'Report', url: 'https://example.org/r', publisher: 'Example' }
@@ -118,5 +120,49 @@ describe('validateGovernment', () => {
   it('rejects an entry with no sources', () => {
     const e = { ...entry('ok'), sources: [] }
     expect(validateGovernment([e], 'g.json').length).toBeGreaterThan(0)
+  })
+})
+
+describe('validatePrimer', () => {
+  const fact = (text: string) => ({ text, source })
+  const card = (id: string, facts: unknown[]) => ({
+    id,
+    title: 'Title',
+    summary: 'Plain summary.',
+    facts,
+  })
+
+  it('passes a clean card', () => {
+    expect(validatePrimer([card('one', [fact('A.'), fact('B.')])], 'p.json')).toEqual([])
+  })
+
+  it('needs at least two facts', () => {
+    const issues = validatePrimer([card('one', [fact('A.')])], 'p.json')
+    expect(issues.some((i) => i.where.includes('facts'))).toBe(true)
+  })
+
+  it('needs a source on every fact', () => {
+    const issues = validatePrimer([card('one', [fact('A.'), { text: 'B.' }])], 'p.json')
+    expect(issues.some((i) => i.where.includes('source'))).toBe(true)
+  })
+
+  it('rejects duplicate ids and em-dashes', () => {
+    const issues = validatePrimer(
+      [card('one', [fact('A.'), fact('B — C')]), card('one', [fact('A.'), fact('B.')])],
+      'p.json',
+    )
+    expect(issues.map((i) => i.message)).toEqual(['em-dash in text', 'duplicate id one'])
+  })
+})
+
+describe('validateStat', () => {
+  it('passes a complete stat', () => {
+    expect(validateStat(stat, 'g.json')).toEqual([])
+  })
+
+  it('fails when method is missing', () => {
+    const rest: Partial<typeof stat> = { ...stat }
+    delete rest.method
+    expect(validateStat(rest, 'g.json').some((i) => i.where.endsWith('method'))).toBe(true)
   })
 })

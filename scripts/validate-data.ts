@@ -1,5 +1,5 @@
 // Usage: node scripts/validate-data.ts [--urls]
-// Validates src/data/companies/*.json and src/data/government.json. --urls also checks every source link (network).
+// Validates src/data/companies/*.json, government.json, primer.json and guidelines.json. --urls also checks every source link (network).
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import {
@@ -7,6 +7,8 @@ import {
   collectUrls,
   validateCompany,
   validateGovernment,
+  validatePrimer,
+  validateStat,
   type Issue,
 } from './validate-lib.ts'
 
@@ -25,6 +27,18 @@ const govFile = join(import.meta.dirname, '..', 'src', 'data', 'government.json'
 const gov: unknown = JSON.parse(readFileSync(govFile, 'utf8'))
 issues.push(...validateGovernment(gov, 'government.json'))
 collectUrls(gov, urls)
+
+const primer: unknown = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'primer.json'), 'utf8'),
+)
+issues.push(...validatePrimer(primer, 'primer.json'))
+collectUrls(primer, urls)
+
+const guidelines: unknown = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'src', 'data', 'guidelines.json'), 'utf8'),
+)
+issues.push(...validateStat(guidelines, 'guidelines.json'))
+collectUrls(guidelines, urls)
 
 if (process.argv.includes('--urls')) {
   issues.push(...(await checkUrls(urls, (u, init) => fetch(u, { ...init, redirect: 'follow' }))))

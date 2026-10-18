@@ -1,0 +1,11 @@
+{
+  "value": 15,
+  "unit": "ug/m3",
+  "source": {
+    "title": "Air quality, energy and health: types of pollutants",
+    "url": "https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
+    "publisher": "World Health Organization"
+  },
+  "asOf": "2026-10-18",
+  "method": "WHO 2021 global air quality guideline level for PM2.5, 24-hour mean, as listed on the WHO page (read 2026-10-18); guidelines published 2021-09-22"
+}

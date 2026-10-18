@@ -1,0 +1,262 @@
+[
+  {
+    "id": "what-is-haze",
+    "title": "What haze is, and why it is dangerous",
+    "summary": "Haze is thick smoke from forest and peat fires that drifts far from where it started. Its tiniest particles, called PM2.5, are small enough to get deep into the lungs. Singapore rates the air with the PSI, and the World Health Organization sets a much stricter guideline for PM2.5.",
+    "facts": [
+      {
+        "text": "Transboundary haze affecting Singapore mainly arises from forest and peat fires in the region.",
+        "source": {
+          "title": "Transboundary haze FAQs",
+          "url": "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "PM2.5 means fine particles smaller than 2.5 micrometres.",
+        "source": {
+          "title": "Transboundary haze FAQs",
+          "url": "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "The WHO says particulate matter can penetrate deep into the lung and enter the bloodstream, and that long-term and short-term exposure are both linked to illness and death.",
+        "source": {
+          "title": "Air quality, energy and health: types of pollutants",
+          "url": "https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
+          "publisher": "World Health Organization"
+        }
+      },
+      {
+        "text": "Singapore's NEA says haze particles can affect the heart and lungs, especially in people who already have chronic heart or lung disease, and may irritate the eyes, nose and throat in healthy people.",
+        "source": {
+          "title": "Transboundary haze FAQs",
+          "url": "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "The WHO estimates that outdoor air pollution caused 4.2 million premature deaths worldwide in 2019.",
+        "stat": {
+          "value": 4200000,
+          "unit": "premature deaths",
+          "source": {
+            "title": "Ambient (outdoor) air quality and health",
+            "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+            "publisher": "World Health Organization"
+          },
+          "asOf": "2026-10-18",
+          "method": "WHO estimate for ambient (outdoor) air pollution worldwide in 2019, as stated on the WHO fact sheet (read 2026-10-18)"
+        },
+        "source": {
+          "title": "Ambient (outdoor) air quality and health",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+          "publisher": "World Health Organization"
+        }
+      },
+      {
+        "text": "The WHO's 2021 guideline for PM2.5 is 15 micrograms per cubic metre as a 24-hour average.",
+        "stat": {
+          "value": 15,
+          "unit": "ug/m3",
+          "source": {
+            "title": "Air quality, energy and health: types of pollutants",
+            "url": "https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
+            "publisher": "World Health Organization"
+          },
+          "asOf": "2026-10-18",
+          "method": "WHO 2021 global air quality guideline level for PM2.5, 24-hour mean, as listed on the WHO page (read 2026-10-18); guidelines published 2021-09-22"
+        },
+        "source": {
+          "title": "Air quality, energy and health: types of pollutants",
+          "url": "https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
+          "publisher": "World Health Organization"
+        }
+      },
+      {
+        "text": "NEA rates the 24-hour PSI as Good (0 to 50), Moderate (51 to 100), Unhealthy (101 to 200), Very Unhealthy (201 to 300) and Hazardous (above 300).",
+        "source": {
+          "title": "Transboundary haze FAQs",
+          "url": "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      }
+    ]
+  },
+  {
+    "id": "why-peat-fires-persist",
+    "title": "Why peat fires are so hard to put out",
+    "summary": "Peat is a thick layer of partly rotted plant matter, and Indonesia has a vast amount of it. Much of it has been drained to make room for plantations. Once alight it can smoulder underground for months, which is why firefighting struggles to finish the job.",
+    "facts": [
+      {
+        "text": "Indonesia has more than 24 million hectares of peatlands.",
+        "stat": {
+          "value": "more than 24 million",
+          "unit": "ha",
+          "source": {
+            "title": "Studying Indonesian peat as it smoulders",
+            "url": "https://www.isis.stfc.ac.uk/science-highlights/studying-indonesian-peat-as-it-smoulders/",
+            "publisher": "ISIS Neutron and Muon Source, STFC"
+          },
+          "asOf": "2026-02-05",
+          "method": "Figure as stated by the STFC ISIS science highlight dated 5 February 2026 (read 2026-10-18)"
+        },
+        "source": {
+          "title": "Studying Indonesian peat as it smoulders",
+          "url": "https://www.isis.stfc.ac.uk/science-highlights/studying-indonesian-peat-as-it-smoulders/",
+          "publisher": "ISIS Neutron and Muon Source, STFC"
+        }
+      },
+      {
+        "text": "Peatlands have been drained to provide land for palm oil, paper and rubber plantations.",
+        "source": {
+          "title": "Studying Indonesian peat as it smoulders",
+          "url": "https://www.isis.stfc.ac.uk/science-highlights/studying-indonesian-peat-as-it-smoulders/",
+          "publisher": "ISIS Neutron and Muon Source, STFC"
+        }
+      },
+      {
+        "text": "Peat fires can persist underground for months and were completely suppressed only when the rainy season arrived.",
+        "source": {
+          "title": "Studying Indonesian peat as it smoulders",
+          "url": "https://www.isis.stfc.ac.uk/science-highlights/studying-indonesian-peat-as-it-smoulders/",
+          "publisher": "ISIS Neutron and Muon Source, STFC"
+        }
+      },
+      {
+        "text": "Peat fires are very difficult to put out because they are deep, and Indonesia's peatland averages 5.5 metres deep.",
+        "stat": {
+          "value": 5.5,
+          "unit": "m (average peat depth)",
+          "source": {
+            "title": "Vast Peat Fires Threaten Health and Boost Global Warming",
+            "url": "https://www.scientificamerican.com/article/vast-peat-fires-threaten-health-and-boost-global-warming/",
+            "publisher": "Scientific American"
+          },
+          "asOf": "2026-10-18",
+          "method": "Average depth of Indonesian peatland as stated in the Scientific American article, attributed there to researchers (read 2026-10-18; no publication date on the page read)"
+        },
+        "source": {
+          "title": "Vast Peat Fires Threaten Health and Boost Global Warming",
+          "url": "https://www.scientificamerican.com/article/vast-peat-fires-threaten-health-and-boost-global-warming/",
+          "publisher": "Scientific American"
+        }
+      },
+      {
+        "text": "Peat draws the fire underground, where it hides before coming back like a zombie, which makes detection and extinction very challenging.",
+        "source": {
+          "title": "Carbon-releasing 'zombie fires' in peatlands could be dampened by new findings",
+          "url": "https://www.imperial.ac.uk/news/207573/carbon-releasing-zombie-fires-peatlands-could-dampened/",
+          "publisher": "Imperial College London"
+        }
+      },
+      {
+        "text": "Peat smouldering fires can propagate for long periods of time (days, weeks, even years) and are particularly difficult to extinguish.",
+        "source": {
+          "title": "Experiments and Observation of Peat Smouldering Fires",
+          "url": "https://era.ed.ac.uk/items/e24552b4-b6c8-43cc-861a-3cf072de145d/full",
+          "publisher": "University of Edinburgh (Ashton et al., 2007)"
+        }
+      },
+      {
+        "text": "Burning peat releases up to ten times more carbon than forest fires.",
+        "source": {
+          "title": "Studying Indonesian peat as it smoulders",
+          "url": "https://www.isis.stfc.ac.uk/science-highlights/studying-indonesian-peat-as-it-smoulders/",
+          "publisher": "ISIS Neutron and Muon Source, STFC"
+        }
+      },
+      {
+        "text": "NASA reported in September 2015 that, as El Nino intensified, peat deposits were making seasonal fires in Sumatra and Borneo unusually difficult to control.",
+        "source": {
+          "title": "Smoke Blankets Indonesia",
+          "url": "https://science.nasa.gov/earth/earth-observatory/smoke-blankets-indonesia-86681",
+          "publisher": "NASA Earth Observatory"
+        }
+      }
+    ]
+  },
+  {
+    "id": "why-singapore-malaysia-affected",
+    "title": "Why Singapore and Malaysia breathe Indonesian smoke",
+    "summary": "The usual dry season in the region runs from June to September. In that period, winds from the south-east to the south-west can carry smoke from fires towards Singapore. Dry spells linked to El Nino and a positive Indian Ocean Dipole raise the risk of fires and haze.",
+    "facts": [
+      {
+        "text": "The Southwest Monsoon period between June and September is the usual dry season for Singapore and the surrounding region.",
+        "source": {
+          "title": "High likelihood of El Nino conditions in second half of 2023 will increase risk of transboundary haze affecting Singapore",
+          "url": "https://www.nea.gov.sg/media/news/advisories/index/high-likelihood-of-el-nino-conditions-in-second-half-of-2023-will-increase-risk-of-transboundary-haze-affecting-singapore",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "Haze reaches Singapore when prevailing south-easterly to south-westerly winds blow smoke haze from the fires towards Singapore.",
+        "source": {
+          "title": "El Nino conditions expected in second half of 2026, with warmer and drier weather in the coming months",
+          "url": "https://www.nea.gov.sg/media/news/news/index/el-niño-conditions-expected-in-second-half-of-2026--with-warmer-and-drier-weather-in-the-coming-months",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "Drier and warmer conditions are conducive to the development of peatland and vegetation fires.",
+        "source": {
+          "title": "High likelihood of El Nino conditions in second half of 2023 will increase risk of transboundary haze affecting Singapore",
+          "url": "https://www.nea.gov.sg/media/news/advisories/index/high-likelihood-of-el-nino-conditions-in-second-half-of-2023-will-increase-risk-of-transboundary-haze-affecting-singapore",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "In May 2026 Singapore's Meteorological Service forecast El Nino and a positive Indian Ocean Dipole, expected to bring warmer and drier conditions to the region from June to October 2026.",
+        "source": {
+          "title": "El Nino conditions expected in second half of 2026, with warmer and drier weather in the coming months",
+          "url": "https://www.nea.gov.sg/media/news/news/index/el-niño-conditions-expected-in-second-half-of-2026--with-warmer-and-drier-weather-in-the-coming-months",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "During positive Indian Ocean Dipole events, cooler sea surface temperatures in the eastern Indian Ocean mean less cloud and below-average rainfall there, which may bring below-average rainfall to Sumatra, Peninsular Malaysia and Singapore.",
+        "source": {
+          "title": "High likelihood of El Nino conditions in second half of 2023 will increase risk of transboundary haze affecting Singapore",
+          "url": "https://www.nea.gov.sg/media/news/advisories/index/high-likelihood-of-el-nino-conditions-in-second-half-of-2023-will-increase-risk-of-transboundary-haze-affecting-singapore",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "Singapore's total rainfall from June to September 2015 was about 35 per cent below the long-term average.",
+        "source": {
+          "title": "High likelihood of El Nino conditions in second half of 2023 will increase risk of transboundary haze affecting Singapore",
+          "url": "https://www.nea.gov.sg/media/news/advisories/index/high-likelihood-of-el-nino-conditions-in-second-half-of-2023-will-increase-risk-of-transboundary-haze-affecting-singapore",
+          "publisher": "National Environment Agency, Singapore"
+        }
+      },
+      {
+        "text": "On 24 September 2015 Singapore's PSI rose into the Hazardous range with a reading of 313, and all primary and secondary schools were closed the next day.",
+        "stat": {
+          "value": 313,
+          "unit": "PSI",
+          "source": {
+            "title": "Hazardous Air Quality Conditions in Singapore",
+            "url": "https://svs.gsfc.nasa.gov/30699",
+            "publisher": "NASA Scientific Visualization Studio"
+          },
+          "asOf": "2015-09-24",
+          "method": "PSI reading at 7pm local time on 24 September 2015, as stated by NASA SVS (read 2026-10-18)"
+        },
+        "source": {
+          "title": "Hazardous Air Quality Conditions in Singapore",
+          "url": "https://svs.gsfc.nasa.gov/30699",
+          "publisher": "NASA Scientific Visualization Studio"
+        }
+      },
+      {
+        "text": "On 16 October 2026 Singapore's environment minister said haze from Sumatra and Kalimantan will blow away from Singapore once the north-east monsoon arrives around early December.",
+        "source": {
+          "title": "Singapore's PSI could go over 300 before haze improves once inter-monsoon period starts, says environment minister",
+          "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/16/singapore039s-psi-could-go-over-300-before-haze-improves-once-inter-monsoon-period-starts-says-environment-minister",
+          "publisher": "The Star"
+        }
+      }
+    ]
+  }
+]

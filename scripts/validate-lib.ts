@@ -2,6 +2,8 @@ import { z } from 'zod'
 import {
   CompanySchema,
   GovernmentEntrySchema,
+  PrimerCardSchema,
+  StatSchema,
   type AllegationStatus,
   type Company,
 } from '../src/data/schema.ts'
@@ -122,6 +124,46 @@ export function validateGovernment(raw: unknown, file: string): Issue[] {
     }
   })
   return issues
+}
+
+// Primer cards (HAZE-12): schema, unique ids, and house style (no em-dashes).
+export function validatePrimer(raw: unknown, file: string): Issue[] {
+  const parsed = z.array(PrimerCardSchema).safeParse(raw)
+  if (!parsed.success) {
+    return parsed.error.issues.map((i) => ({
+      level: 'error',
+      where: `${file}:${i.path.join('.')}`,
+      message: i.message,
+    }))
+  }
+  const issues: Issue[] = []
+  const ids = new Set<string>()
+  parsed.data.forEach((card, n) => {
+    if (ids.has(card.id)) {
+      issues.push({
+        level: 'error',
+        where: `${file}:[${n}].id`,
+        message: `duplicate id ${card.id}`,
+      })
+    }
+    ids.add(card.id)
+    for (const [p, t] of strings(card, `[${n}]`)) {
+      if (t.includes('—')) {
+        issues.push({ level: 'error', where: `${file}:${p}`, message: 'em-dash in text' })
+      }
+    }
+  })
+  return issues
+}
+
+export function validateStat(raw: unknown, file: string): Issue[] {
+  const parsed = StatSchema.safeParse(raw)
+  if (parsed.success) return []
+  return parsed.error.issues.map((i) => ({
+    level: 'error',
+    where: `${file}:${i.path.join('.')}`,
+    message: i.message,
+  }))
 }
 
 type FetchLike = (url: string, init?: { method?: string }) => Promise<{ status: number }>

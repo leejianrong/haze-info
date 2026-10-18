@@ -117,3 +117,19 @@ export const GovernmentEntrySchema = z.object({
   asOf: isoDate,
 })
 export type GovernmentEntry = z.infer<typeof GovernmentEntrySchema>
+
+// Newcomer primer (HAZE-12): short cards, each fact carrying its own source.
+export const PrimerFactSchema = z.object({
+  text: z.string().min(1),
+  stat: StatSchema.optional(),
+  source: SourceSchema,
+})
+export type PrimerFact = z.infer<typeof PrimerFactSchema>
+
+export const PrimerCardSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'id must be a kebab-case slug'),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  facts: z.array(PrimerFactSchema).min(2),
+})
+export type PrimerCard = z.infer<typeof PrimerCardSchema>
