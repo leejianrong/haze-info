@@ -6,7 +6,7 @@
 
 ## Context
 
-The site's headline subject is the companies behind the haze. The evidence is uneven. Satellite hotspots and burn scars show fire inside a concession. Greenpeace has linked 20+ concessions to smoke sources. Indonesian ministries have suspended 21 companies and penalised 20. Companies such as First Resources reply that fires began outside their boundaries and that hotspots alone do not establish responsibility. Naming a company as the cause without a finding is a defamation risk and weakens credibility.
+The site's headline subject is the companies behind the haze. The evidence is uneven. Satellite hotspots and burn scars show fire inside a concession. Greenpeace has linked 20+ concessions to smoke sources. Indonesian ministries have opened enforcement against 21 companies and sanctioned 26 (see `src/data/government.json`). Companies such as First Resources reply that fires began outside their boundaries and that hotspots alone do not establish responsibility. Naming a company as the cause without a finding is a defamation risk and weakens credibility.
 
 ## Decision
 
