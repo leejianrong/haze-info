@@ -1,7 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import {
   checkUrls,
+  collectActionContactUrls,
   collectUrls,
+  validateActions,
   findBannedWord,
   validateCompany,
   validateGovernment,
@@ -240,6 +242,91 @@ describe('validateHealthGuidance', () => {
   it('requires a one-sentence summary', () => {
     const issues = validateHealthGuidance([link('one', { summary: 'One. Two.' })], 'h.json')
     expect(issues.some((i) => i.where.endsWith('summary'))).toBe(true)
+  })
+})
+
+function action(
+  id: string,
+  over: Record<string, unknown> = {},
+  body = 'Figure {{burnedHaTotal}}.',
+) {
+  return {
+    id,
+    title: 'Ask a thing',
+    audience: 'company',
+    ask: 'Please publish X.',
+    target: {
+      name: 'Example Ltd',
+      contact: {
+        kind: 'web-form',
+        value: 'https://example.org/contact',
+        source,
+        verifiedOn: '2026-10-18',
+      },
+    },
+    template: { body, stats: ['burnedHaTotal'] },
+    ...over,
+  }
+}
+
+describe('validateActions', () => {
+  it('passes a valid card', () => {
+    expect(validateActions([action('one')], 'a.json')).toEqual([])
+  })
+
+  it('flags duplicate ids', () => {
+    const issues = validateActions([action('one'), action('one')], 'a.json')
+    expect(issues.some((i) => i.message.includes('duplicate id'))).toBe(true)
+  })
+
+  it('flags an unknown placeholder, including the live PSI', () => {
+    const issues = validateActions([action('one', {}, 'PSI is {{psiNow}}.')], 'a.json')
+    expect(issues.some((i) => i.message.includes('unknown placeholder id psiNow'))).toBe(true)
+  })
+
+  it('flags a placeholder missing from stats and a stat not used', () => {
+    const a = action('one', { template: { body: '{{burnedHaPalm}}', stats: ['burnedHaTotal'] } })
+    const messages = validateActions([a], 'a.json').map((i) => i.message)
+    expect(messages.some((m) => m.includes('not listed in stats'))).toBe(true)
+    expect(messages.some((m) => m.includes('not used in the body'))).toBe(true)
+  })
+
+  it('rejects causal wording unless the company status allows it', () => {
+    const card = action('one', { companySlug: 'x' }, 'Your fires caused {{burnedHaTotal}} ha.')
+    expect(validateActions([card], 'a.json', { x: 'detected' }).length).toBe(1)
+    expect(validateActions([card], 'a.json', { x: 'ministry-sanctioned' })).toEqual([])
+  })
+
+  it('flags an unknown company slug and an em-dash', () => {
+    const card = action('one', { companySlug: 'nope', ask: 'Do — this.' })
+    const issues = validateActions([card], 'a.json')
+    expect(issues.some((i) => i.message.includes('unknown company'))).toBe(true)
+    expect(issues.some((i) => i.message.includes('em-dash'))).toBe(true)
+  })
+
+  it('rejects a bad email, a non-https link and a missing source', () => {
+    const contact = (c: Record<string, unknown>) =>
+      action('one', { target: { name: 'T', contact: { source, verifiedOn: '2026-10-18', ...c } } })
+    const bad = [
+      contact({ kind: 'email', value: 'not-an-email' }),
+      contact({ kind: 'page', value: 'http://example.org' }),
+      contact({ kind: 'page', value: 'https://example.org', source: undefined }),
+    ]
+    for (const card of bad) expect(validateActions([card], 'a.json').length).toBeGreaterThan(0)
+  })
+})
+
+describe('collectActionContactUrls', () => {
+  it('collects links but not email addresses', () => {
+    const emailCard = action('two', {
+      target: {
+        name: 'T',
+        contact: { kind: 'email', value: 'a@b.org', source, verifiedOn: '2026-10-18' },
+      },
+    })
+    expect([...collectActionContactUrls([action('one'), emailCard])]).toEqual([
+      'https://example.org/contact',
+    ])
   })
 })
 

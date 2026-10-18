@@ -246,3 +246,58 @@ export const PersonSchema = z
     }
   })
 export type Person = z.infer<typeof PersonSchema>
+
+// Action cards (HAZE-22, ADR-0008): a target, one checkable ask and a pre-filled message. No data is collected.
+export const ACTION_AUDIENCES = [
+  'company',
+  'government-sg',
+  'government-my',
+  'government-id',
+  'asean',
+  'public',
+] as const
+
+export const ContactSchema = z
+  .object({
+    kind: z.enum(['email', 'web-form', 'page']),
+    // An email address, or an https URL for web-form and page.
+    value: z.string().min(1),
+    // The official page where this contact was read.
+    source: SourceSchema,
+    verifiedOn: isoDate,
+  })
+  .superRefine((c, ctx) => {
+    const ok =
+      c.kind === 'email'
+        ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.value)
+        : /^https:\/\/\S+$/.test(c.value)
+    if (!ok) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['value'],
+        message:
+          c.kind === 'email' ? 'value must be an email address' : 'value must be an https URL',
+      })
+    }
+  })
+export type Contact = z.infer<typeof ContactSchema>
+
+export const ActionCardSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'id must be a kebab-case slug'),
+  title: z.string().min(1),
+  audience: z.enum(ACTION_AUDIENCES),
+  ask: z.string().min(1),
+  // Slug of the profiled company this card names, if any. Sets which wording is allowed (ADR-0002).
+  companySlug: z.string().optional(),
+  target: z.object({
+    name: z.string().min(1),
+    role: z.string().optional(),
+    contact: ContactSchema,
+  }),
+  template: z.object({
+    body: z.string().min(1),
+    // Data ids the body cites through {{placeholders}}.
+    stats: z.array(z.string().min(1)),
+  }),
+})
+export type ActionCard = z.infer<typeof ActionCardSchema>
