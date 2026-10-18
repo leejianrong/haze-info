@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import {
+  BurnedAreaSchema,
   CompanySchema,
   GovernmentEntrySchema,
   PrimerCardSchema,
@@ -164,6 +165,38 @@ export function validateStat(raw: unknown, file: string): Issue[] {
     where: `${file}:${i.path.join('.')}`,
     message: i.message,
   }))
+}
+
+export function validateBurnedArea(raw: unknown, file: string): Issue[] {
+  const parsed = BurnedAreaSchema.safeParse(raw)
+  if (!parsed.success) {
+    return parsed.error.issues.map((i) => ({
+      level: 'error',
+      where: `${file}:${i.path.join('.')}`,
+      message: i.message,
+    }))
+  }
+  const d = parsed.data
+  const issues: Issue[] = []
+  const err = (where: string, message: string) =>
+    issues.push({ level: 'error', where: `${file}:${where}`, message })
+  const num = (v: number | string) => (typeof v === 'number' ? v : Number.NaN)
+  if (d.total.unit !== 'ha') err('total.unit', 'burned area must be in ha')
+  if (d.inConcessions.unit !== 'ha') err('inConcessions.unit', 'burned area must be in ha')
+  d.bySector.forEach(
+    (s, i) => s.stat.unit !== 'ha' && err(`bySector[${i}].stat.unit`, 'burned area must be in ha'),
+  )
+  d.referenceAreas.forEach(
+    (r, i) =>
+      r.area.unit !== 'km2' &&
+      err(`referenceAreas[${i}].area.unit`, 'reference areas must be in km2'),
+  )
+  if (!(num(d.inConcessions.value) <= num(d.total.value)))
+    err('inConcessions.value', 'concession burn cannot exceed the total')
+  const sectors = d.bySector.reduce((sum, s) => sum + num(s.stat.value), 0)
+  if (!(sectors <= num(d.inConcessions.value)))
+    err('bySector', 'sector hectares cannot add up to more than the concession total')
+  return issues
 }
 
 type FetchLike = (url: string, init?: { method?: string }) => Promise<{ status: number }>

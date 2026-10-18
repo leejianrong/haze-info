@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import MapView from '../components/MapView.svelte'
   import PsiBadge from '../components/PsiBadge.svelte'
+  import BurnScale from '../components/BurnScale.svelte'
   import GovernmentTimeline from '../components/GovernmentTimeline.svelte'
   import Primer from '../components/Primer.svelte'
   import { companies } from '../data/companies.ts'
@@ -62,6 +63,8 @@
           they spread into peat, which smoulders for weeks.
         </p>
         <Primer />
+        <h3 class="sub">Big enough to see from space</h3>
+        <BurnScale />
       </section>
 
       <section id="companies">
@@ -181,6 +184,14 @@
     line-height: 1;
     margin: 0 0 16px;
     text-wrap: balance;
+  }
+  .sub {
+    font-family: var(--f-display);
+    font-stretch: 72%;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1;
+    margin: 40px 0 14px;
   }
   .muted {
     color: var(--ink-2);
