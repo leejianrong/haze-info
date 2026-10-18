@@ -8,6 +8,9 @@ describe('formatValue', () => {
   it('keeps string values as given', () => {
     expect(formatValue('about 556', 'ha')).toBe('about 556 ha')
   })
+  it('puts a currency symbol before the number', () => {
+    expect(formatValue(1661.1, 'US$ million')).toBe('US$1,661.1 million')
+  })
   it('attaches a percent sign without a space', () => {
     expect(formatValue(24, '%')).toBe('24%')
   })
