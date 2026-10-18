@@ -10,26 +10,34 @@
 
   let container: HTMLDivElement
   let mapRef = $state<import('maplibre-gl').Map | undefined>()
-  let status = $state<'loading' | 'ready' | 'unavailable'>('loading')
+  // Idle until the reader scrolls, taps or presses a key, so the heavy map code stays off the first load.
+  let status = $state<'idle' | 'loading' | 'ready' | 'unavailable'>('idle')
   let showHotspots = $state(true)
   let apply: ((visible: boolean) => void) | undefined
+  let startNow: (() => void) | undefined
 
   const snapshotNote = hotspots.asOf
     ? `Hotspots as of ${hotspots.asOf}`
     : 'No hotspot snapshot has been published yet'
 
+  const ACTIVATE = ['scroll', 'wheel', 'pointerdown', 'touchstart', 'keydown'] as const
+
   onMount(() => {
     let map: import('maplibre-gl').Map | undefined
     let cancelled = false
-    ;(async () => {
+    let started = false
+    const stop = () => ACTIVATE.forEach((t) => window.removeEventListener(t, start))
+    function start() {
+      if (started) return
+      started = true
+      stop()
+      status = 'loading'
+      void load()
+    }
+    ACTIVATE.forEach((t) => window.addEventListener(t, start, { passive: true }))
+    startNow = start
+    async function load() {
       try {
-        // Keep the first paint free: start loading the map only once the browser is idle.
-        await new Promise<void>((resolve) =>
-          'requestIdleCallback' in window
-            ? window.requestIdleCallback(() => resolve(), { timeout: 1500 })
-            : setTimeout(resolve, 300),
-        )
-        if (cancelled) return
         const [maplibregl] = await Promise.all([
           import('maplibre-gl'),
           import('maplibre-gl/dist/maplibre-gl.css'),
@@ -59,15 +67,17 @@
           })
           apply = (visible) =>
             map!.setLayoutProperty('hotspots', 'visibility', visible ? 'visible' : 'none')
+          apply(showHotspots)
           mapRef = map
           status = 'ready'
         })
       } catch {
         status = 'unavailable'
       }
-    })()
+    }
     return () => {
       cancelled = true
+      stop()
       map?.remove()
     }
   })
@@ -93,7 +103,26 @@
   data-focus={focus.center.join(',')}
 >
   <div class="canvas" bind:this={container}>
-    {#if status === 'unavailable'}
+    {#if status === 'idle'}
+      <div class="facade">
+        <svg
+          viewBox="0 0 640 380"
+          role="img"
+          aria-label="Schematic of Sumatra, Kalimantan, Malaysia and Singapore"
+        >
+          <path d="M40 140 L170 195 L250 290 L205 335 L95 270 Z" class="land" />
+          <path d="M390 170 L520 150 L570 235 L520 335 L420 345 L370 260 Z" class="land" />
+          <path d="M230 80 L290 70 L315 115 L265 150 Z" class="land faint" />
+          <g class="label">
+            <text x="55" y="168">SUMATRA</text>
+            <text x="400" y="190">KALIMANTAN</text>
+            <text x="236" y="62">MALAYSIA</text>
+            <text x="322" y="100">SINGAPORE</text>
+          </g>
+        </svg>
+        <button class="load" onclick={() => startNow?.()}>Load the interactive map</button>
+      </div>
+    {:else if status === 'unavailable'}
       <p class="unavailable">The map could not load. The figures on this page are unaffected.</p>
     {/if}
   </div>
@@ -113,6 +142,40 @@
     position: relative;
     height: var(--map-h, min(60vh, 460px));
     min-height: 200px;
+  }
+  .facade {
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    display: grid;
+    place-items: center;
+  }
+  .facade svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .land {
+    fill: color-mix(in srgb, var(--ink) 15%, var(--paper));
+  }
+  .land.faint {
+    fill: color-mix(in srgb, var(--ink) 9%, var(--paper));
+  }
+  .label {
+    font-family: var(--f-data);
+    font-size: 12px;
+    fill: var(--ink-2);
+  }
+  .load {
+    position: relative;
+    font-family: var(--f-data);
+    font-size: 0.78rem;
+    background: var(--ink);
+    color: var(--ground);
+    border: 0;
+    padding: 10px 14px;
+    cursor: pointer;
   }
   .unavailable {
     position: absolute;

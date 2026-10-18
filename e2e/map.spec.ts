@@ -12,6 +12,7 @@ test('map loads at 360px and the hotspot toggle works', async ({ page }) => {
   await page.route(STYLE, (route) => route.fulfill({ json: blankStyle }))
   await page.goto('/')
   const map = page.getByRole('region', { name: 'Map of fire hotspots' })
+  await page.keyboard.press('Shift')
   await expect(map).toHaveAttribute('data-status', 'ready')
   await expect(map.locator('canvas')).toBeVisible()
   const toggle = map.getByLabel('Hotspots')
@@ -30,7 +31,25 @@ test('with the basemap blocked the page still shows a message and its other cont
   await page.route(STYLE, (route) => route.abort())
   await page.goto('/')
   const map = page.getByRole('region', { name: 'Map of fire hotspots' })
+  await page.keyboard.press('Shift')
   await expect(map).toHaveAttribute('data-status', 'unavailable')
   await expect(map).toContainText('The map could not load')
   await expect(page.getByRole('heading', { level: 1, name: 'Haze Info' })).toBeVisible()
+})
+
+test('the map stays a light static schematic until the reader interacts', async ({ page }) => {
+  let styleRequests = 0
+  await page.route(STYLE, (route) => {
+    styleRequests++
+    return route.fulfill({ json: blankStyle })
+  })
+  await page.goto('/')
+  await page.waitForLoadState('networkidle')
+  const map = page.getByRole('region', { name: 'Map of fire hotspots' })
+  await expect(map).toHaveAttribute('data-status', 'idle')
+  await expect(map.getByRole('img', { name: /Schematic of Sumatra/ })).toBeVisible()
+  expect(styleRequests).toBe(0)
+  await map.getByRole('button', { name: 'Load the interactive map' }).click()
+  await expect(map).toHaveAttribute('data-status', 'ready')
+  expect(styleRequests).toBeGreaterThan(0)
 })
