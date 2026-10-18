@@ -24,6 +24,8 @@ export const PAYWALLED_HOSTS = [
   'bloomberg.com',
   'nikkei.com',
   'thejakartapost.com',
+  // Rejects non-browser requests but loads in a real browser (checked 2026-10-18).
+  'parlimen.gov.my',
 ]
 
 function strings(value: unknown, path: string, out: [string, string][] = []): [string, string][] {
